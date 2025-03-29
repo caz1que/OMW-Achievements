@@ -25,6 +25,7 @@ The following types of achievements are available:
 | description | *string* Achievement description. Shown in the widget and notification.                                                                                                                  |
 | icon        | *string* The path to the icon file for the achievement. Icon recommendations: file path starts with `Icons\MAC`, .dds format, resolution 64x64 pixels                                    |
 | id          | *string* A unique achievement id used to store information about the achievement in storage. Must be different from the id of all other achievements (including Collection achievements) |
+| hidden      | *boolean* Whether the achievement is hidden or not. `true` - hidden achievement, `false` - not hidden achievement.                                                                       |
 
 <br>
 
@@ -73,12 +74,36 @@ The following types of achievements are available:
 
 <br>
 
+## How to add your achievements
+
 First of all, we need to use the `scripts\omw_achievements\achievements\playerAchievements.lua` file.
 
 Initially, it looks like this:
 
 ```lua
 local playerAchievements = {}
+
+return playerAchievements
+```
+
+To add one achievement, you need to add one table to the `playerAchievements` table. For example:
+
+```lua
+local playerAchievements = {
+    {
+        type = "single_quest",
+        name = "MyAchievement",
+        description = "MyAchievement Description",
+        journalID = "quest_journal_id",
+        stage = 100,
+        operator = function(self, givenStage)
+            return givenStage >= self.stage
+        end,
+        icon = "Icons\\MAC\\icn_my_achievement_icon.dds",
+        id = "my_ach_01",
+        hidden = false
+    }
+}
 
 return playerAchievements
 ```
