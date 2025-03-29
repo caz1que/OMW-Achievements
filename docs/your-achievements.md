@@ -1,5 +1,7 @@
 # How to add and create your achievements
 
+<br>
+
 ## Achievement types
 
 The following types of achievements are available:
