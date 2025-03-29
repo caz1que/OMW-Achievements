@@ -18,3 +18,7 @@ Requires OpenMW 0.49+.
 <br>
 
 ## How to get achievements
+
+The `o` button is used by default to open the achievement widget. Note that there are hidden achievements, the number of which is shown at the end of the list.
+
+The hidden achievements feature is used to avoid spoilers and add interest in obtaining them. There is an option to turn it off in the mod settings.
