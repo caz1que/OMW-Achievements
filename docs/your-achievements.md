@@ -107,3 +107,5 @@ local playerAchievements = {
 
 return playerAchievements
 ```
+
+Once you start the game, your achievements will appear at the end of the widget list.
