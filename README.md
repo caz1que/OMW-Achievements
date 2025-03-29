@@ -46,7 +46,7 @@ If you want to use the framework without the built-in achievements, it can be do
 
 I heard ya. I've written a special guide on how to add your own achievements. This may be relevant if you use mods that add new content, like quests or NPCs, and you want to get achievements for them too.
 
-The guide is available here.
+The guide is available [here](https://github.com/caz1que/OMW-Achievements/blob/main/docs/your-achievements.md).
 
 <br>
 
