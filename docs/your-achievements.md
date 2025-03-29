@@ -16,7 +16,19 @@ The following types of achievements are available:
 
 <br>
 
-## 
+## Common keys for all types of achievements
+
+| Key         | Description                                                                                                                                                                              |
+|-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| type        | *string* Achievement type. All available achievement types are listed above.                                                                                                             |
+| name        | *string* Achievement name. Shown in the widget and notification.                                                                                                                         |
+| description | *string* Achievement description. Shown in the widget and notification.                                                                                                                  |
+| icon        | *string* The path to the icon file for the achievement. Icon recommendations: - file path starts with `Icons\MAC`. - .dds format - resolution 64x64 pixels                               |
+| id          | *string* A unique achievement id used to store information about the achievement in storage. Must be different from the id of all other achievements (including Collection achievements) |
+
+<br>
+
+## Keys for achievement type “single_quest”
 
 First of all, we need to use the `scripts\omw_achievements\achievements\playerAchievements.lua` file.
 
