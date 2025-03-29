@@ -19,6 +19,8 @@ Requires OpenMW 0.49+.
 
 ## How to get achievements
 
+Getting achievements **doesn't work** on old saves. You must **start a new game** after installing the mod to get achievements.
+
 Achievements can be unlocked for: 
 - quest completion
 - starting a conversation with a specific NPC
