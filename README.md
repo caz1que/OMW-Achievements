@@ -36,6 +36,12 @@ The hidden achievements feature is used to avoid spoilers and add interest in ob
 
 <br>
 
+## Mod version without built-in achievements
+
+If you want to use the framework without the built-in achievements, it can be downloaded here. It can come in handy if you only want to use custom achievements.
+
+<br>
+
 ## Wanna add your achievements?
 
 I heard ya. I've written a special guide on how to add your own achievements. This may be relevant if you use mods that add new content, like quests or NPCs, and you want to get achievements for them too.
