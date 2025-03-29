@@ -62,6 +62,17 @@ The following types of achievements are available:
 |-----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | factionId | *string* or *table* FactionID of faction the player must join to get the achievement. If it is necessary to join ONE of the listed factions, the table is used. For example, `factionId = { “telvanni”, “redoran”, “hlaalu” }`, means that the player must join ONE of the listed factions to get the achievement. |
 
+## Keys for achievement type "rank_faction"
+
+| Key       | Description                                                                                  |
+|-----------|----------------------------------------------------------------------------------------------|
+| factionId | *string* FactionID of faction in which you must reach a certain rank to get the achievement. |
+| rank      | *number* The rank that must be achieved to get the achievement.                              |
+
+<br>
+
+
+
 First of all, we need to use the `scripts\omw_achievements\achievements\playerAchievements.lua` file.
 
 Initially, it looks like this:
