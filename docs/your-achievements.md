@@ -48,6 +48,20 @@ The following types of achievements are available:
 
 <br>
 
+## Keys for achievement type "talkto"
+
+| Key      | Description                                                                           |
+|----------|---------------------------------------------------------------------------------------|
+| recordId | *string* RecordId of NPC with whom you need to start a dialog to get the achievement. |
+
+<br>
+
+## Keys for achievement type "join_faction"
+
+| Key       | Description                                                                                                                                                                                                                                                                                                        |
+|-----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| factionId | *string* or *table* FactionID of faction the player must join to get the achievement. If it is necessary to join ONE of the listed factions, the table is used. For example, `factionId = { “telvanni”, “redoran”, “hlaalu” }`, means that the player must join ONE of the listed factions to get the achievement. |
+
 First of all, we need to use the `scripts\omw_achievements\achievements\playerAchievements.lua` file.
 
 Initially, it looks like this:
