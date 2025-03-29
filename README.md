@@ -31,3 +31,11 @@ After opening the achievement, the player receives a notification in the upper r
 The `o` button is used by default to open the achievement widget. Note that there are hidden achievements, the number of which is shown at the end of the list.
 
 The hidden achievements feature is used to avoid spoilers and add interest in obtaining them. There is an option to turn it off in the mod settings.
+
+<br>
+
+## Wanna add your achievements?
+
+I heard ya. I've written a special guide on how to add your own achievements. This may be relevant if you use mods that add new content, like quests or NPCs, and you want to get achievements for them too.
+
+The guide is available here.
