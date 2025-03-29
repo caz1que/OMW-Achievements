@@ -24,6 +24,7 @@ Achievements can be unlocked for:
 - starting a conversation with a specific NPC
 - joining a faction
 - gaining a certain rank in a faction
+- performing different actions a certain number of times (e.g., reading a book 50 times, etc.)
 
 After opening the achievement, the player receives a notification in the upper right corner of the screen.
 
