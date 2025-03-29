@@ -30,6 +30,14 @@ The following types of achievements are available:
 
 ## Keys for achievement type “single_quest”
 
+| Key       | Description                                                                                                                                                                                                                                                         |
+|-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| journalID | *string* Journal ID for the quest that must be completed to get the achievement.                                                                                                                                                                                    |
+| stage     | *number* Stage for the quest to be used in the operator.                                                                                                                                                                                                            |
+| operator  | *function* A function that contains the condition for getting the achievement. For example, `return givenStage >= self.stage` means that to get the achievement, the player must reach a quest stage that is greater than or equal to the one specified in `stage`. |
+
+<br>
+
 First of all, we need to use the `scripts\omw_achievements\achievements\playerAchievements.lua` file.
 
 Initially, it looks like this:
