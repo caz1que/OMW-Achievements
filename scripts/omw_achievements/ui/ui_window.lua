@@ -921,7 +921,6 @@ local function onKeyPress(key)
             current_MAC_section = "all"
             createMainWindow(false, true, 1, getAchievements())
             showable = true
-            print(tostring(core.getGameTime()))
         else
             achievementWindow:destroy()
             I.UI.removeMode('Interface')
