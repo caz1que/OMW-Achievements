@@ -83,12 +83,23 @@ sq_08_description: "Complete your clan specific Vampire quests."
 book_01_name: "Lost In A Book"
 book_01_description: "Read 50 different books."
 
+killtribunal_01_name: "Tribunal's Judgment"
+killtribunal_01_description: "The Tribunal ends as it began. With death."
+
+werewolf_01_name: "Sanies Lupinus"
+werewolf_01_description: "Transform into a Werewolf for the first time."
+
+dayspassed_01_name: "What Main Quest?"
+dayspassed_01_description: "Let 60 in days pass without starting the main quest."
+
 tt_01_name: "What's A Scamp Gotta Do?"
 tt_01_description: "Meet Creeper."
 tt_02_name: "Talking. Mudcrab. Merchant."
 tt_02_description: "Meet the mudcrab merchant."
 tt_03_name: "Tarhiel's Savior"
 tt_03_description: "Save Tarhiel from his deadly fall."
+tt_04_name: "The Liar"
+tt_04_description: "Meet M'aiq the Liar."
 
 fc_01_name: "I Cast A Spell"
 fc_01_description: "Join the Mages Guild."

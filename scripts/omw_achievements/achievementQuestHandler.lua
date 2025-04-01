@@ -66,6 +66,20 @@ local function onQuestUpdate(questId, stage)
 
         end
 
+        --- Check for unique
+        if achievements[i].type == "unique" then
+            if achievements[i].id == "killtribunal_01" and questId == "tr_sothasil" and stage >= 100 then
+                if macData:get("vivecIsDead") then
+                    self.object:sendEvent('gettingAchievement', {
+                        name = achievements[i].name,
+                        description = achievements[i].description,
+                        icon = achievements[i].icon,
+                        id = achievements[i].id
+                    })
+                end
+            end
+        end
+
     end 
 end
 

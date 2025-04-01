@@ -13,6 +13,14 @@ local function onActivated(actor)
                 end
             end
         end
+
+        if achievements[i].type == "unique" then
+            if achievements[i].id == "killtribunal_01" and self.object.recordId == "vivec_god" then
+                if types.Actor.isDead(self.object) == true then
+                    actor:sendEvent('vivecIsDead', achievements[i])
+                end
+            end
+        end
     end
 
 end

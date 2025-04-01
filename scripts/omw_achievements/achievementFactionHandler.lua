@@ -2,7 +2,6 @@ local self = require('openmw.self')
 local types = require('openmw.types')
 local ui = require('openmw.ui')
 local interfaces = require('openmw.interfaces')
-local storage = require('openmw.storage')
 
 local achievements = require('scripts.omw_achievements.achievements.achievements')
 local frameCount = 0

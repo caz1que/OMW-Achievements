@@ -47,7 +47,6 @@ local function updateStorage(data)
 
     for k, v in pairs(temporaryTable) do
         if k == "OMWACounters" then
-            print('Found OMWACounters in temporaryTable')
             OMWACounters = temporaryTable["OMWACounters"]
             temporaryTable["OMWACounters"] = nil
         end
@@ -60,16 +59,9 @@ local function updateStorage(data)
 
     if OMWACounters ~= nil then
         OMWACounters = stringToTable(OMWACounters)
-        print('Type of OMWACounters: ' .. tostring(type(OMWACounters)))
         for i, v in ipairs(OMWACounters) do
-
-            print('Value from OMWACounters: ' .. tostring(v))
-            print('Value from temporaryTable: ' .. tostring(temporaryTable[v]))
-            print('Type of value from temporaryTable: ' .. tostring(type(temporaryTable[v])))
-
             if temporaryTable[v] then
                 temporaryTable[v] = stringToTable(v)
-                print('String to table of temporaryTable ' .. tostring(temporaryTable[v]))
             end
         end
     end

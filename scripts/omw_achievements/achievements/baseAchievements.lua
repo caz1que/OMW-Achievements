@@ -120,6 +120,13 @@ local baseAchievements = {
         hidden = true
     },
     {
+        type = "unique",
+        name = l10n('dayspassed_01_name'),
+        description = l10n('dayspassed_01_description'),
+        icon = "Icons\\MAC\\icn_MQDelayed.dds",
+        id = "dayspassed_01"
+    },
+    {
         type = "single_quest",
         name = l10n('mq_10_name'),
         description = l10n('mq_10_description'),
@@ -302,6 +309,14 @@ local baseAchievements = {
         hidden = false
     },
     {
+        type = "unique",
+        name = l10n('werewolf_01_name'),
+        description = l10n('werewolf_01_description'),
+        icon = "Icons\\MAC\\icn_ContractedWere.dds",
+        id = "werewolf_01",
+        hidden = false
+    },
+    {
         type = "multi_quest",
         name = l10n('sq_06_name'),
         description = l10n('sq_06_description'),
@@ -417,6 +432,23 @@ local baseAchievements = {
         icon = "Icons\\MAC\\icn_TarhielSavior.dds",
         id = "tt_03",
         hidden = false
+    },
+    {
+        type = "talkto",
+        name = l10n('tt_04_name'),
+        description = l10n('tt_04_description'),
+        recordId = "m'aiq",
+        icon = "Icons\\MAC\\icn_theLiar.dds",
+        id = "tt_04",
+        hidden = true
+    },
+    {
+        type = "unique",
+        name = l10n('killtribunal_01_name'),
+        description = l10n('killtribunal_01_description'),
+        icon = "Icons\\MAC\\icn_TribEnd.dds",
+        id = "killtribunal_01",
+        hidden = true
     },
     {
         type = "join_faction",

@@ -87,6 +87,37 @@ local function bookRead(data)
     
 end
 
+local function vivecIsDead(data)
+
+    local macData = interfaces.storageUtils.getStorage()
+    macData:set('vivecIsDead', true)
+
+    if types.Player.quests(self.object)['tr_sothasil'].stage >= 100 then
+        self.object:sendEvent('gettingAchievement', {
+            name = data.name,
+            description = data.description,
+            icon = data.icon,
+            id = data.id
+        })
+    end
+
+end
+
+local function daysPassed()
+    for i = 1, #achievements do
+        if achievements[i].type == "unique" and achievements[i].id == "dayspassed_01" then
+            if types.Player.quests(self.object)["a1_1_findspymaster"].stage < 14 then
+                self.object:sendEvent('gettingAchievement', {
+                    name = achievements[i].name,
+                    description = achievements[i].description,
+                    icon = achievements[i].icon,
+                    id = achievements[i].id
+                })
+            end
+        end
+    end
+end
+
 function onFrame(dt)
     if isNotificationShowable == true then
         frameCount = frameCount + 1
@@ -102,7 +133,9 @@ end
 return {
     eventHandlers = {
         gettingAchievement = gettingAchievement,
-        bookRead = bookRead
+        bookRead = bookRead,
+        vivecIsDead = vivecIsDead,
+        daysPassed = daysPassed
     },
     engineHandlers = {
         onFrame = onFrame
