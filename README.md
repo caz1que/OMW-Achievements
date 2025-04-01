@@ -40,6 +40,14 @@ The hidden achievements feature is used to avoid spoilers and add interest in ob
 
 <br>
 
+## How achievement progress is saved
+
+For each created character - a separate achievement progress. This is implemented by creating a separate storage for each new save directory.
+
+This means that for each new save directory in the path `Documents\My Games\OpenMW\saves` a separate storage will be created, in which the player's progress on achievements will be saved.
+
+<br>
+
 ## Mod version without built-in achievements
 
 If you want to use the framework without the built-in achievements, it can be downloaded here. It can come in handy if you only want to use custom achievements.
