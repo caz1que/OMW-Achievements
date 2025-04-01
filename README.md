@@ -8,7 +8,7 @@ Requires OpenMW 0.49+.
 
 <br>
 
-![Example](docs/img/1.jpg)
+![Example](docs/img/2.jpg)
 
 <br>
 
