@@ -2,7 +2,7 @@
 
 **OMW Achievements** - a mod that adds the ability to get achievements to the game. There is support for the adding your own achievements. 
 
-It is a OpenMW version of MWSE mod “The Achievement Framework” by Safebox. The mod also includes achievements from “Morrowind Achievement Collection” by nazz190. Russian localization of achievements by Pirate443.
+It is a OpenMW version of MWSE mod “[The Achievement Framework](https://www.nexusmods.com/morrowind/mods/51081)” by Safebox. The mod also includes achievements from “[Morrowind Achievement Collection](https://www.nexusmods.com/morrowind/mods/53617)” by nazz190. Russian localization of achievements by Pirate443.
 
 Requires OpenMW 0.49+.
 
