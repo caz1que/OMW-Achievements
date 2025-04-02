@@ -1,0 +1,17 @@
+PLAYER: scripts/omw_achievements/settingsPage.lua
+
+GLOBAL: scripts/omw_achievements/lib/globalCurrentSaveDir.lua
+MENU: scripts/omw_achievements/lib/menuCurrentSaveDir.lua
+PLAYER: scripts/omw_achievements/lib/playerCurrentSaveDir.lua
+
+PLAYER: scripts/omw_achievements/achievementStorage.lua
+PLAYER: scripts/omw_achievements/notificationHandler.lua
+
+PLAYER: scripts/omw_achievements/daysPassed.lua
+
+PLAYER: scripts/omw_achievements/ui/ui_window.lua
+PLAYER: scripts/omw_achievements/achievementQuestHandler.lua
+PLAYER: scripts/omw_achievements/achievementWerewolfHandler.lua
+PLAYER: scripts/omw_achievements/achievementFactionHandler.lua
+NPC, CREATURE: scripts/omw_achievements/achievementActorHandler.lua
+BOOK: scripts/omw_achievements/achievementBookHandler.lua
