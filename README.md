@@ -50,7 +50,7 @@ This means that for each new save directory in the path `Documents\My Games\Open
 
 ## Mod version without built-in achievements
 
-If you want to use the framework without the built-in achievements, it can be downloaded here. It can come in handy if you only want to use custom achievements.
+If you want to use the framework without the built-in achievements, it can be downloaded [here](https://github.com/caz1que/OMW-Achievements/releases/tag/v1.0.0-framework). It can come in handy if you only want to use custom achievements.
 
 <br>
 
