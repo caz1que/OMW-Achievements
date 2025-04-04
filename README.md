@@ -64,4 +64,10 @@ The guide is available [here](https://github.com/caz1que/OMW-Achievements/blob/m
 
 ## Special thanks
 
-Special thanks to S3 and Qlonever for advice and help with UI development.
+- [Safebox](https://forums.nexusmods.com/profile/17885684-safebox/) for making "The Achievement Framework"
+- [nazz190](https://forums.nexusmods.com/profile/441579-nazz190/) for making "Morrowind Achievement Collection"
+- [Pirate443](https://forums.nexusmods.com/profile/193911948-pirate443/) for russian localization of achievements from MAC.
+- [S3ctor](https://gitlab.com/magicaldave1) and **Qlonever** for advice and help with UI development.
+- **The OpenMW team**, including every contributor for making OpenMW.
+- **The MOMW team** for being amazing.
+- **Bethesda** for making Morrowind.
