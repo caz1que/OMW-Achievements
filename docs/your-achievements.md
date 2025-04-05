@@ -26,11 +26,7 @@ The following types of achievements are available:
 | icon        | *string* The path to the icon file for the achievement. Icon recommendations: file path starts with `Icons\MAC`, .dds format, resolution 64x64 pixels                                    |
 | id          | *string* A unique achievement id used to store information about the achievement in storage. Must be different from the id of all other achievements (including Collection achievements) |
 | hidden      | *boolean* Whether the achievement is hidden or not. `true` - hidden achievement, `false` - not hidden achievement.                                                                       |
-| bgColor      | *string* **Only available when using mod version v.1.1.1 or framework version v.1.1.0.**
-
-Color for the background of the achievement icon.
-
-The following colors are available: 'yellow', 'red', 'blue', 'green', 'aqua', 'purple'. If the key is not used, the default color will be 'yellow'.                                                                     |
+| bgColor      | *string* **Only available when using mod version v.1.1.1 or framework version v.1.1.0.**\nColor for the background of the achievement icon.\nThe following colors are available: 'yellow', 'red', 'blue', 'green', 'aqua', 'purple'. If the key is not used, the default color will be 'yellow'.                                                                     |
 
 <br>
 
