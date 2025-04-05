@@ -16,7 +16,8 @@ local function isWerewolf()
                         name = achievements[i].name,
                         icon = achievements[i].icon,
                         description = achievements[i].description,
-                        id = achievements[i].id
+                        id = achievements[i].id,
+                        bgColor = achievements[i].bgColor
                     }
                     self.object:sendEvent('gettingAchievement', data)
                 end

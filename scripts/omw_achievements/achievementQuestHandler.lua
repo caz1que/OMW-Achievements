@@ -74,7 +74,8 @@ local function onQuestUpdate(questId, stage)
                         name = achievements[i].name,
                         description = achievements[i].description,
                         icon = achievements[i].icon,
-                        id = achievements[i].id
+                        id = achievements[i].id,
+                        bgColor = achievements[i].bgColor
                     })
                 end
             end

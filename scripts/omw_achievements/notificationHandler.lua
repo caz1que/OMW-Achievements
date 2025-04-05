@@ -38,7 +38,8 @@ local function gettingAchievement(data)
             local icon = data.icon
             local name = data.name
             local description = data.description
-            notification.createnotification(icon, name, description)
+            local bg = data.bgColor
+            notification.createnotification(icon, name, description, bg)
             isNotificationShowable = true
         end
     end
@@ -81,7 +82,8 @@ local function bookRead(data)
             name = bookAchievement.name,
             description = bookAchievement.description,
             icon = bookAchievement.icon,
-            id = bookAchievement.id
+            id = bookAchievement.id,
+            bgColor = bookAchievement.bgColor
         })
     end
     
@@ -97,7 +99,8 @@ local function vivecIsDead(data)
             name = data.name,
             description = data.description,
             icon = data.icon,
-            id = data.id
+            id = data.id,
+            bgColor = data.bgColor
         })
     end
 
@@ -111,7 +114,8 @@ local function daysPassed()
                     name = achievements[i].name,
                     description = achievements[i].description,
                     icon = achievements[i].icon,
-                    id = achievements[i].id
+                    id = achievements[i].id,
+                    bgColor = achievements[i].bgColor
                 })
             end
         end

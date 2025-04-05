@@ -1,11 +1,20 @@
 setting_omwachievements_page: 'OpenMW Achievements'
-setting_omwachievements_page_description: 'Adds achievements to the game'
+setting_omwachievements_page_description: 'Adds achievements to the game. Version: v1.1.1'
 setting_omwachievements_group: 'OpenMW Achievements'
 setting_omwachievements_group_description: 'OpenMW Achievements Settings'
 setting_toggle: 'Toggle Widget'
 setting_toggle_description: 'Toggle Achievements Widget'
 setting_show_hidden: 'Show Hidden Achievements'
 setting_show_hidden_description: 'Show Hidden Achievements in Achievements Widget. WARNING: Hidden achievements may contain spoilers. Not recommended for first playthrough.'
+setting_notification_position: "Notification Position"
+setting_notification_position_description: "Position of the pop-up notification that appears after receiving an achievement."
+
+right_top: "Right Top"
+right_bottom: "Right Bottom"
+left_top: "Left Top"
+left_bottom: "Left Bottom"
+center_bottom: "Center Bottom"
+center_top: "Center Top"
 
 header_text: "Achievements"
 

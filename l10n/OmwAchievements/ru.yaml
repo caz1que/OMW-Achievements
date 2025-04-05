@@ -1,11 +1,20 @@
 setting_omwachievements_page: 'Достижения OpenMW'
-setting_omwachievements_page_description: 'Добавляет достижения в игру.'
+setting_omwachievements_page_description: 'Добавляет достижения в игру. Версия: v1.1.1'
 setting_omwachievements_group: 'Достижения OpenMW'
 setting_omwachievements_group_description: 'Настройки OpenMW достижений.'
 setting_toggle: 'Открыть виджет'
 setting_toggle_description: 'Открыть окно достижений.'
 setting_show_hidden: 'Показывать скрытые достижения'
 setting_show_hidden_description: 'Показывать скрытые достижения в окне с достижениями. ВНИМАНИЕ: Скрытые достижения могут содержать спойлеры. Не рекомендуется при первом прохождении.'
+setting_notification_position: "Положение уведомления"
+setting_notification_position_description: "Положение уведомления, появляющегося после получения достижения."
+
+right_top: "Вверху справа"
+right_bottom: "Внизу справа"
+left_top: "Вверху слева"
+left_bottom: "Внизу слева"
+center_bottom: "По центру внизу"
+center_top: "По центру вверху"
 
 header_text: "Достижения"
 

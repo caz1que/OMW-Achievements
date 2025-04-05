@@ -343,7 +343,25 @@ local function createAchievementList(page, achievementsTable)
                     iconBg = "Icons\\MAC\\icnBackground.tga"
                 elseif achievementsForList[i].id ~= "hidden_count_MAC" and macData:get(achievementsForList[i].id) == true then
                     iconColor = "000000"
-                    iconBg = "Icons\\MAC\\icnBackgroundGet.tga"
+
+                    if achievementsForList[i].bgColor ~= nil then
+                        if achievementsForList[i].bgColor == "green" then
+                            iconBg = "Icons\\MAC\\icnBackgroundGet_Green.tga"
+                        elseif achievementsForList[i].bgColor == "red" then
+                            iconBg = "Icons\\MAC\\icnBackgroundGet_Red.tga"
+                        elseif achievementsForList[i].bgColor == "blue" then
+                            iconBg = "Icons\\MAC\\icnBackgroundGet_Blue.tga"
+                        elseif achievementsForList[i].bgColor == "purple" then
+                            iconBg = "Icons\\MAC\\icnBackgroundGet_Purple.tga"
+                        elseif achievementsForList[i].bgColor == "yellow" then
+                            iconBg = "Icons\\MAC\\icnBackgroundGet_Yellow.tga"
+                        elseif achievementsForList[i].bgColor == "aqua" then
+                            iconBg = "Icons\\MAC\\icnBackgroundGet_Aqua.tga"
+                        end
+                    else
+                        iconBg = "Icons\\MAC\\icnBackgroundGet.tga"
+                    end
+
                 elseif achievementsForList[i].id == "hidden_count_MAC" then
                     iconColor = "000000"
                     iconBg = "Icons\\MAC\\icnBackground.tga"
@@ -373,7 +391,25 @@ local function createAchievementList(page, achievementsTable)
                     iconBg = "Icons\\MAC\\icnBackground.tga"
                 elseif achievementsForList[i].id ~= "hidden_count_MAC" and macData:get(achievementsForList[i].id) == true then
                     iconColor = "000000"
-                    iconBg = "Icons\\MAC\\icnBackgroundGet.tga"
+                    
+                    if achievementsForList[i].bgColor ~= nil then
+                        if achievementsForList[i].bgColor == "green" then
+                            iconBg = "Icons\\MAC\\icnBackgroundGet_Green.tga"
+                        elseif achievementsForList[i].bgColor == "red" then
+                            iconBg = "Icons\\MAC\\icnBackgroundGet_Red.tga"
+                        elseif achievementsForList[i].bgColor == "blue" then
+                            iconBg = "Icons\\MAC\\icnBackgroundGet_Blue.tga"
+                        elseif achievementsForList[i].bgColor == "purple" then
+                            iconBg = "Icons\\MAC\\icnBackgroundGet_Purple.tga"
+                        elseif achievementsForList[i].bgColor == "yellow" then
+                            iconBg = "Icons\\MAC\\icnBackgroundGet_Yellow.tga"
+                        elseif achievementsForList[i].bgColor == "aqua" then
+                            iconBg = "Icons\\MAC\\icnBackgroundGet_Aqua.tga"
+                        end
+                    else
+                        iconBg = "Icons\\MAC\\icnBackgroundGet.tga"
+                    end
+
                 elseif achievementsForList[i].id == "hidden_count_MAC" then
                     iconColor = "000000"
                     iconBg = "Icons\\MAC\\icnBackground.tga"

@@ -1,6 +1,8 @@
 local I = require('openmw.interfaces')
 local storage = require('openmw.storage')
 
+local positions = {"right_top", "left_top", "right_bottom", "left_bottom", "center_bottom", "center_top"}
+
 I.Settings.registerPage {
     key = "OmwAchievementsPage",
     l10n = "OmwAchievements",
@@ -29,7 +31,19 @@ I.Settings.registerGroup {
             name = 'setting_show_hidden',
             description = 'setting_show_hidden_description',
             default = false
-        }
+        },
+        {
+            key = 'notification_position',
+            renderer = 'select',
+            name = 'setting_notification_position',
+            description = 'setting_notification_position_description',
+            default = "right_top",
+            argument = {
+                disabled = false,
+                l10n = 'OmwAchievements',
+                items = positions
+            }
+        },
     },
 }
 

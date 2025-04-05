@@ -12,6 +12,7 @@ local baseAchievements = {
             return givenStage >= self.stage
         end,
         icon = "Icons\\MAC\\icn_A1_1_1.dds",
+        bgColor = "yellow",
         id = "mq_01",
         hidden = false
     },
@@ -25,6 +26,7 @@ local baseAchievements = {
             return givenStage >= self.stage
         end,
         icon = "Icons\\MAC\\icn_A1_1_14.dds",
+        bgColor = "yellow",
         id = "mq_02",
         hidden = false
     },
@@ -38,6 +40,7 @@ local baseAchievements = {
             return givenStage >= self.stage
         end,
         icon = "Icons\\MAC\\icn_A2_1_60.dds",
+        bgColor = "yellow",
         id = "mq_03",
         hidden = true
     },
@@ -51,6 +54,7 @@ local baseAchievements = {
             return givenStage >= self.stage
         end,
         icon = "Icons\\MAC\\icn_A2_2_50.dds",
+        bgColor = "yellow",
         id = "mq_04",
         hidden = true
     },
@@ -64,6 +68,7 @@ local baseAchievements = {
             return givenStage >= self.stage
         end,
         icon = "Icons\\MAC\\icn_A2_3_40.dds",
+        bgColor = "yellow",
         id = "mq_05",
         hidden = true
     },
@@ -77,6 +82,7 @@ local baseAchievements = {
             return currentQuestStageTable[1] >= self.stage[1] and currentQuestStageTable[2] >= self.stage[2] and currentQuestStageTable[3] >= self.stage[3]
         end,
         icon = "Icons\\MAC\\icn_Hort.dds",
+        bgColor = "yellow",
         id = "mq_06",
         hidden = true
     },
@@ -90,6 +96,7 @@ local baseAchievements = {
             return currentQuestStageTable[1] >= self.stage[1] and currentQuestStageTable[2] >= self.stage[2] and currentQuestStageTable[3] >= self.stage[3] and currentQuestStageTable[4] >= self.stage[4]
         end,
         icon = "Icons\\MAC\\icn_B_Nerevarine.dds",
+        bgColor = "yellow",
         id = "mq_07",
         hidden = true
     },
@@ -103,6 +110,7 @@ local baseAchievements = {
             return givenStage >= self.stage
         end,
         icon = "Icons\\MAC\\icn_B8_MeetVivec_34.dds",
+        bgColor = "yellow",
         id = "mq_08",
         hidden = true
     },
@@ -116,6 +124,7 @@ local baseAchievements = {
             return currentQuestStageTable[1] >= self.stage[1] and currentQuestStageTable[2] >= self.stage[2]
         end,
         icon = "Icons\\MAC\\icn_SecretPath.dds",
+        bgColor = "yellow",
         id = "mq_09",
         hidden = true
     },
@@ -124,6 +133,7 @@ local baseAchievements = {
         name = l10n('dayspassed_01_name'),
         description = l10n('dayspassed_01_description'),
         icon = "Icons\\MAC\\icn_MQDelayed.dds",
+        bgColor = "purple",
         id = "dayspassed_01"
     },
     {
@@ -136,6 +146,7 @@ local baseAchievements = {
             return givenStage >= self.stage
         end,
         icon = "Icons\\MAC\\icn_C3_DestroyDagoth_20.dds",
+        bgColor = "yellow",
         id = "mq_10",
         hidden = true
     },
@@ -149,6 +160,7 @@ local baseAchievements = {
             return givenStage >= self.stage
         end,
         icon = "Icons\\MAC\\icn_MHAttack.dds",
+        bgColor = "yellow",
         id = "mq_13",
         hidden = true
     },
@@ -162,6 +174,7 @@ local baseAchievements = {
             return givenStage >= self.stage
         end,
         icon = "Icons\\MAC\\icn_TRBlade.dds",
+        bgColor = "yellow",
         id = "mq_14",
         hidden = true
     },
@@ -175,6 +188,7 @@ local baseAchievements = {
             return givenStage >= self.stage
         end,
         icon = "Icons\\MAC\\icn_TRAlmaEnd.dds",
+        bgColor = "yellow",
         id = "mq_15",
         hidden = true
     },
@@ -188,6 +202,7 @@ local baseAchievements = {
             return givenStage >= self.stage
         end,
         icon = "Icons\\MAC\\icn_BM_MeetSkaal.dds",
+        bgColor = "yellow",
         id = "mq_17",
         hidden = true
     },
@@ -201,6 +216,7 @@ local baseAchievements = {
             return givenStage >= self.stage
         end,
         icon = "Icons\\MAC\\icn_BM_DefendSkaal.dds",
+        bgColor = "yellow",
         id = "mq_18",
         hidden = true
     },
@@ -214,6 +230,7 @@ local baseAchievements = {
             return currentQuestStageTable[1] >= self.stage[1] or currentQuestStageTable[2] >= self.stage[2]
         end,
         icon = "Icons\\MAC\\icn_BM_Karstaag.dds",
+        bgColor = "yellow",
         id = "mq_19",
         hidden = true
     },
@@ -227,6 +244,7 @@ local baseAchievements = {
             return givenStage >= self.stage
         end,
         icon = "Icons\\MAC\\icn_BM_WildHunt.dds",
+        bgColor = "yellow",
         id = "mq_20",
         hidden = true
     },
@@ -240,6 +258,7 @@ local baseAchievements = {
             return currentQuestStageTable[1] >= self.stage[1] and currentQuestStageTable[2] >= self.stage[2] and currentQuestStageTable[3] >= self.stage[3]
         end,
         icon = "Icons\\MAC\\icn_AllMainQ.dds",
+        bgColor = "yellow",
         id = "mq_21",
         hidden = true
     },
@@ -253,6 +272,7 @@ local baseAchievements = {
             return givenStage >= self.stage
         end,
         icon = "Icons\\MAC\\icn_FargothsRing.dds",
+        bgColor = "red",
         id = "sq_01",
         hidden = false
     },
@@ -266,6 +286,7 @@ local baseAchievements = {
             return currentQuestStageTable[1] >= self.stage[1] and currentQuestStageTable[2] >= self.stage[2] and currentQuestStageTable[3] >= self.stage[3] and currentQuestStageTable[4] >= self.stage[4] and currentQuestStageTable[5] >= self.stage[5] and currentQuestStageTable[6] >= self.stage[6] and currentQuestStageTable[7] >= self.stage[7]
         end,
         icon = "Icons\\MAC\\icn_Pilgrimages.dds",
+        bgColor = "red",
         id = "sq_02",
         hidden = false
     },
@@ -279,6 +300,7 @@ local baseAchievements = {
             return currentQuestStageTable[1] >= self.stage[1] and currentQuestStageTable[2] >= self.stage[2] and currentQuestStageTable[3] >= self.stage[3]
         end,
         icon = "Icons\\MAC\\icn_NakedNords.dds",
+        bgColor = "red",
         id = "sq_03",
         hidden = false
     },
@@ -292,6 +314,7 @@ local baseAchievements = {
             return givenStage == self.stage
         end,
         icon = "Icons\\MAC\\icn_GlimpseFuture.dds",
+        bgColor = "red",
         id = "sq_04",
         hidden = false
     },
@@ -305,6 +328,7 @@ local baseAchievements = {
             return((currentQuestStageTable[1] >= self.stage[1]) and (currentQuestStageTable[2] == self.stage[2]) and (currentQuestStageTable[3] == self.stage[3]) and (currentQuestStageTable[4] == self.stage[4]) and ((currentQuestStageTable[5]) == self.stage[5] or (currentQuestStageTable[6] == self.stage[6])))
         end,
         icon = "Icons\\MAC\\icn_lovers.dds",
+        bgColor = "red",
         id = "sq_05",
         hidden = false
     },
@@ -313,6 +337,7 @@ local baseAchievements = {
         name = l10n('werewolf_01_name'),
         description = l10n('werewolf_01_description'),
         icon = "Icons\\MAC\\icn_ContractedWere.dds",
+        bgColor = "purple",
         id = "werewolf_01",
         hidden = false
     },
@@ -326,6 +351,7 @@ local baseAchievements = {
             return currentQuestStageTable[1] >= self.stage[1] or currentQuestStageTable[2] >= self.stage[2]
         end,
         icon = "Icons\\MAC\\icn_CureWere.dds",
+        bgColor = "red",
         id = "sq_06",
         hidden = true
     },
@@ -339,6 +365,7 @@ local baseAchievements = {
             return currentQuestStageTable[1] >= self.stage[1] and currentQuestStageTable[2] >= self.stage[2] and currentQuestStageTable[3] >= self.stage[3] and currentQuestStageTable[4] >= self.stage[4] and currentQuestStageTable[5] == self.stage[5] and currentQuestStageTable[6] == self.stage[6] and currentQuestStageTable[7] == self.stage[7]
         end,
         icon = "Icons\\MAC\\icn_Daedrashrines.dds",
+        bgColor = "red",
         id = "sq_07",
         hidden = true
     },
@@ -352,6 +379,7 @@ local baseAchievements = {
             return givenStage >= self.stage
         end,
         icon = "Icons\\MAC\\icn_ToMournhold.dds",
+        bgColor = "yellow",
         id = "mq_11",
         hidden = false
     },
@@ -365,6 +393,7 @@ local baseAchievements = {
             return givenStage >= self.stage
         end,
         icon = "Icons\\MAC\\icn_ToSolstheim.dds",
+        bgColor = "yellow",
         id = "mq_16",
         hidden = false
     },
@@ -378,6 +407,7 @@ local baseAchievements = {
             return givenStage >= self.stage
         end,
         icon = "Icons\\MAC\\icn_HuntDB.dds",
+        bgColor = "yellow",
         id = "mq_12",
         hidden = true
     },
@@ -395,6 +425,7 @@ local baseAchievements = {
             )
         end,
         icon = "Icons\\MAC\\icn_VampQuests.dds",
+        bgColor = "red",
         id = "sq_08",
         hidden = true
     },
@@ -403,6 +434,7 @@ local baseAchievements = {
         name = l10n('book_01_name'),
         description = l10n('book_01_description'),
         icon = "Icons\\MAC\\icn_ReadBooks.dds",
+        bgColor = "purple",
         id = "book_01",
         hidden = false
     },
@@ -412,6 +444,7 @@ local baseAchievements = {
         description = l10n('tt_01_description'),
         recordId = "scamp_creeper",
         icon = "Icons\\MAC\\icn_Creeper.dds",
+        bgColor = "blue",
         id = "tt_01",
         hidden = false
     },
@@ -421,6 +454,7 @@ local baseAchievements = {
         description = l10n('tt_02_description'),
         recordId = "mudcrab_unique",
         icon = "Icons\\MAC\\icn_MudcrabMerchant.dds",
+        bgColor = "blue",
         id = "tt_02",
         hidden = false
     },
@@ -430,6 +464,7 @@ local baseAchievements = {
         description = l10n('tt_03_description'),
         recordId = "agronian guy",
         icon = "Icons\\MAC\\icn_TarhielSavior.dds",
+        bgColor = "blue",
         id = "tt_03",
         hidden = false
     },
@@ -439,6 +474,7 @@ local baseAchievements = {
         description = l10n('tt_04_description'),
         recordId = "m'aiq",
         icon = "Icons\\MAC\\icn_theLiar.dds",
+        bgColor = "blue",
         id = "tt_04",
         hidden = true
     },
@@ -447,6 +483,7 @@ local baseAchievements = {
         name = l10n('killtribunal_01_name'),
         description = l10n('killtribunal_01_description'),
         icon = "Icons\\MAC\\icn_TribEnd.dds",
+        bgColor = "purple",
         id = "killtribunal_01",
         hidden = true
     },
@@ -456,6 +493,7 @@ local baseAchievements = {
         description = l10n('fc_01_description'),
         factionId = "mages guild",
         icon = "Icons\\MAC\\icn_MGJoin.dds",
+        bgColor = "green",
         id = "fc_01",
         hidden = false
     },
@@ -465,6 +503,7 @@ local baseAchievements = {
         description = l10n('fc_02_description'),
         factionId = "thieves guild",
         icon = "Icons\\MAC\\icn_TGJoin.dds",
+        bgColor = "green",
         id = "fc_02",
         hidden = false
     },
@@ -474,6 +513,7 @@ local baseAchievements = {
         description = l10n('fc_03_description'),
         factionId = "fighters guild",
         icon = "Icons\\MAC\\icn_FGJoin.dds",
+        bgColor = "green",
         id = "fc_03",
         hidden = false
     },
@@ -483,6 +523,7 @@ local baseAchievements = {
         description = l10n('fc_04_description'),
         factionId = "morag tong",
         icon = "Icons\\MAC\\icn_MTJoin.dds",
+        bgColor = "green",
         id = "fc_04",
         hidden = false
     },
@@ -492,6 +533,7 @@ local baseAchievements = {
         description = l10n('fc_05_description'),
         factionId = "imperial legion",
         icon = "Icons\\MAC\\icn_ILJoin.dds",
+        bgColor = "green",
         id = "fc_05",
         hidden = false
     },
@@ -501,6 +543,7 @@ local baseAchievements = {
         description = l10n('fc_06_description'),
         factionId = "imperial cult",
         icon = "Icons\\MAC\\icn_ICJoin.dds",
+        bgColor = "green",
         id = "fc_06",
         hidden = false
     },
@@ -510,6 +553,7 @@ local baseAchievements = {
         description = l10n('fc_07_description'),
         factionId = "temple",
         icon = "Icons\\MAC\\icn_TTJoin.dds",
+        bgColor = "green",
         id = "fc_07",
         hidden = false
     },
@@ -519,6 +563,7 @@ local baseAchievements = {
         description = l10n('fc_08_description'),
         factionId = "east empire company",
         icon = "Icons\\MAC\\icn_EECJoin.dds",
+        bgColor = "green",
         id = "fc_08",
         hidden = false
     },
@@ -528,6 +573,7 @@ local baseAchievements = {
         description = l10n('fc_09_description'),
         factionId = { "telvanni", "redoran", "hlaalu" },
         icon = "Icons\\MAC\\icn_GHJoined.dds",
+        bgColor = "green",
         id = "fc_09",
         hidden = false
     },
@@ -538,6 +584,7 @@ local baseAchievements = {
         factionId = "mages guild",
         rank = 10,
         icon = "Icons\\MAC\\icn_MGArchmage.dds",
+        bgColor = "aqua",
         id = "fc_10",
         hidden = true
     },
@@ -548,6 +595,7 @@ local baseAchievements = {
         factionId = "thieves guild",
         rank = 10,
         icon = "Icons\\MAC\\icn_TGMasterThief.dds",
+        bgColor = "aqua",
         id = "fc_11",
         hidden = true
     },
@@ -558,6 +606,7 @@ local baseAchievements = {
         factionId = "fighters guild",
         rank = 10,
         icon = "Icons\\MAC\\icn_FGMaster.dds",
+        bgColor = "aqua",
         id = "fc_12",
         hidden = true
     },
@@ -568,6 +617,7 @@ local baseAchievements = {
         factionId = "morag tong",
         rank = 10,
         icon = "Icons\\MAC\\icn_MTGrandmaster.dds",
+        bgColor = "aqua",
         id = "fc_13",
         hidden = true
     },
@@ -578,6 +628,7 @@ local baseAchievements = {
         factionId = "imperial legion",
         rank = 10,
         icon = "Icons\\MAC\\icn_ILDragKnight.dds",
+        bgColor = "aqua",
         id = "fc_14",
         hidden = true
     },
@@ -588,6 +639,7 @@ local baseAchievements = {
         factionId = "imperial cult",
         rank = 10,
         icon = "Icons\\MAC\\icn_ICPrimate.dds",
+        bgColor = "aqua",
         id = "fc_15",
         hidden = true
     },
@@ -598,6 +650,7 @@ local baseAchievements = {
         factionId = "temple",
         rank = 10,
         icon = "Icons\\MAC\\icn_TTPatriarch.dds",
+        bgColor = "aqua",
         id = "fc_16",
         hidden = true
     },
@@ -608,6 +661,7 @@ local baseAchievements = {
         factionId = "east empire company",
         rank = 9,
         icon = "Icons\\MAC\\icn_EECFactor.dds",
+        bgColor = "aqua",
         id = "fc_17",
         hidden = true
     },
@@ -621,6 +675,7 @@ local baseAchievements = {
             return currentQuestStageTable[1] == self.stage[1] or currentQuestStageTable[2] == self.stage[2] or currentQuestStageTable[3] == self.stage[3]
         end,
         icon = "Icons\\MAC\\icn_stronghold.dds",
+        bgColor = "aqua",
         id = "fc_18",
         hidden = false
     }

@@ -5,16 +5,50 @@ local v2 = util.vector2
 local core = require('openmw.core')
 local l10n = core.l10n('OmwAchievements')
 
+local storage = require('openmw.storage')
+local playerSettings = storage.playerSection('SettingsPlayerOmwAchievements')
+
 local notification = {}
 
-function notification.createnotification(icon_path, achName, achDescription)
+function notification.createnotification(icon_path, achName, achDescription, bg)
+
+    if playerSettings:get('notification_position') == "right_top" then
+        notificationPosition = v2(.97, .03)
+    elseif playerSettings:get('notification_position') == "left_top" then
+        notificationPosition = v2(.27, .03)
+    elseif playerSettings:get('notification_position') == "right_bottom" then
+        notificationPosition = v2(.97, .65)
+    elseif playerSettings:get('notification_position') == "left_bottom" then
+        notificationPosition = v2(.27, .65)
+    elseif playerSettings:get('notification_position') == "center_bottom" then
+        notificationPosition = v2(.63, .70)
+    elseif playerSettings:get('notification_position') == "center_top" then
+        notificationPosition = v2(.63, .04)
+    end
 
     local screenSize = ui.screenSize()
     local icon_size = screenSize.y * 0.05
     local width_ratio = 0.19
     local widget_width = screenSize.x * width_ratio
     local widget_height = icon_size * 1.8
-    local icon_bg = "Icons\\MAC\\icnBackgroundGet.tga"
+
+    if bg ~= nil then
+        if bg == "red" then
+            icon_bg = "Icons\\MAC\\icnBackgroundGet_Red.tga"
+        elseif bg == "yellow" then
+            icon_bg = "Icons\\MAC\\icnBackgroundGet_Yellow.tga"
+        elseif bg == "green" then
+            icon_bg = "Icons\\MAC\\icnBackgroundGet_Green.tga"
+        elseif bg == "aqua" then
+            icon_bg = "Icons\\MAC\\icnBackgroundGet_Aqua.tga"
+        elseif bg == "blue" then
+            icon_bg = "Icons\\MAC\\icnBackgroundGet_Blue.tga"
+        elseif bg == "purple" then
+            icon_bg = "Icons\\MAC\\icnBackgroundGet_Purple.tga"
+        end
+    else
+        icon_bg = "Icons\\MAC\\icnBackgroundGet.tga"
+    end
 
     local getTextSize = (screenSize.x * 0.01)
     local nameTextSize = (screenSize.x * 0.008)
@@ -160,7 +194,7 @@ function notification.createnotification(icon_path, achName, achDescription)
         template = I.MWUI.templates.boxTransparentThick,
         props = {
             anchor = v2(1, 0),
-            relativePosition = v2(.97, .03)
+            relativePosition = notificationPosition
         },
         content = ui.content({achievementNotificationBox})
     }
