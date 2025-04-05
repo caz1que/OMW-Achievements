@@ -32,7 +32,7 @@ Achievements can be unlocked for:
 - gaining a certain rank in a faction
 - performing different actions a certain number of times (e.g., reading a book 50 times, etc.)
 
-After opening the achievement, the player receives a notification in the upper right corner of the screen.
+After opening the achievement, the player receives a notification in the upper right corner of the screen (by default). You can change position of notification in the mod settings.
 
 The `o` button is used by default to open the achievement widget. Note that there are hidden achievements, the number of which is shown at the end of the list.
 
