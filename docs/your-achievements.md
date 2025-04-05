@@ -123,6 +123,8 @@ Go to "Settings" -> "Debug" -> tick the checkbox "Skip menu and create a default
 
 This will create a new save directory.
 
+<br>
+
 ### How to test getting achievement type "single_quest"
 
 1. Open the game console (by default ~).
@@ -131,11 +133,15 @@ This will create a new save directory.
 - stage - key `stage` from the table of your achievement
 3. If all is well, you will receive a notification that the achievement has been unlocked, and in the achievements widget it will be marked as "unlocked".
 
+<br>
+
 ### How to test getting achievement type "multi_quest"
 
 1. Open the game console (by default ~).
 2. The process is the same as in "single_quest", but the 'journal' command must be entered for each quest. The order in which the commands are executed does not matter.
 3. If all is well, you will receive a notification that the achievement has been unlocked, and in the achievements widget it will be marked as "unlocked".
+
+<br>
 
 ### How to test getting achievement type "talkto"
 
@@ -145,11 +151,15 @@ There are two options:
 
 After that, you should start a dialogue with this NPC. If all is well, you will receive a notification that the achievement has been unlocked, and in the achievements widget it will be marked as "unlocked".
 
+<br>
+
 ### How to test getting achievement type "join_faction"
 
 1. Open the game console (by default ~).
 2. Enter the command `PCJoinFaction "<factionId>"`, where `factionId` is the ID of the faction you need to join to get the achievement.
 3. If all is well, you will receive a notification that the achievement has been unlocked, and in the achievements widget it will be marked as "unlocked".
+
+<br>
 
 ### How to test getting achievement type "rank_faction"
 
