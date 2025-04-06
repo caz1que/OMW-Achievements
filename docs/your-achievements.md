@@ -147,7 +147,7 @@ This will create a new save directory.
 
 There are two options:
 - Find the necessary NPC for the dialogue manually
-- Create a new copy of the NPC and place it right in front of the player using the console command: `player->placeatme "<recordId>"` 1,1,1 1`, where `recordId` is the value of the `recordId` key from your achievement table
+- Create a new copy of the NPC and place it right in front of the player using the console command: `player->placeatme "<recordId>" 1,1,1 1`, where `recordId` is the value of the `recordId` key from your achievement table
 
 After that, you should start a dialogue with this NPC. If all is well, you will receive a notification that the achievement has been unlocked, and in the achievements widget it will be marked as "unlocked".
 
