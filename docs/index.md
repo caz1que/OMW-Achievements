@@ -6,4 +6,5 @@ OMW Achievements - a mod that adds the ability to get achievements to the game. 
    :maxdepth: 2
    :caption: Contents:
 
-your-achievements.md
+create-your-achievements.md
+test-your-achievements.md

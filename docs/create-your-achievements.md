@@ -13,6 +13,9 @@ The following types of achievements are available:
 | talkto       | To get this achievement, you must start a dialog with a specific NPC (for the first time). |
 | join_faction | To get this achievement, you must join a specific faction.                                 |
 | rank_faction | To get this achievement, you must obtain a certain rank in a faction.                      |
+| visit_all    | To get this type of achievement you need to visit all the listed cells.                    |
+| read_all     | To get this type of achievement, you need to read all the listed books.                    |
+| equipment    | To get this type of achievement, you must equip the listed items on the specified equipment slots. |
 
 <br>
 
@@ -75,6 +78,63 @@ The following types of achievements are available:
 
 <br>
 
+## Keys for achievement type "visit_all"
+
+| Key       | Description                                                                                  |
+|-----------|----------------------------------------------------------------------------------------------|
+| cells     | *table* A table with cells that all need to be visited to get the achievement.               |
+
+<br>
+
+## Keys for achievement type "read_all"
+
+| Key       | Description                                                                                  |
+|-----------|----------------------------------------------------------------------------------------------|
+| books     | *table* Table with recordId of books that need to be read to get the achievement.            |
+
+<br>
+
+## Keys for achievement type "equipment"
+
+| Key       | Description                                                                                  |
+|-----------|----------------------------------------------------------------------------------------------|
+| equipment | *table* A table where the keys are `types.Actor.EQUIPMENT_SLOT` values, and the values ​​are *string* or *table*, denoting the recordId of the items that must be equipped to get the achievement.            |
+
+If *string* is used, then one specific item must be equipped, the recordId of which is specified in the value.
+
+If *table* is used, then one of the items whose recordId is listed in the table must be equipped on specified slot.
+
+For possible equipment slots, see [OpenMW Documentation](https://openmw.readthedocs.io/en/latest/reference/lua-scripting/openmw_types.html##(Actor).EQUIPMENT_SLOT).
+
+<br>
+
+**Example:**
+
+```lua
+{
+    type = "equipment",
+    name = l10n('eq_01_name'),
+    description = l10n('eq_01_description'),
+    equipment = {
+        [slot.Boots] = "daedric_boots",
+        [slot.Cuirass] = {"daedric_cuirass", "daedric_cuirass_htab"},
+        [slot.Greaves] = {"daedric_greaves", "daedric_greaves_htab"},
+        [slot.LeftGauntlet] = "daedric_gauntlet_left",
+        [slot.RightGauntlet] = "daedric_gauntlet_right",
+        [slot.LeftPauldron] = "daedric_pauldron_left",
+        [slot.RightPauldron] = "daedric_pauldron_right",
+        [slot.Helmet] = {"daedric_god_helm", "daedric_fountain_helm", "daedric_terrifying_helm"},
+        [slot.CarriedLeft] = {"daedric_shield", "daedric_towershield"}
+    },
+    icon = "Icons\\MAC\\icn_daedricEq.dds",
+    bgColor = "blue",
+    id = "eq_01",
+    hidden = false
+},
+```
+
+<br>
+
 ## How to add your achievements
 
 First of all, we need to use the `scripts\omw_achievements\achievements\playerAchievements.lua` file.
@@ -112,58 +172,3 @@ return playerAchievements
 Once you start the game, your achievements will appear at the end of the widget list.
 
 <br>
-
-# How to test your achievements
-
-I highly recommend testing achievements in debug mode. Especially if you want to get them in your playthrough later.
-
-**How to enable debug mode in the OpenMW launcher:**
-
-Go to "Settings" -> "Debug" -> tick the checkbox "Skip menu and create a default character".
-
-This will create a new save directory.
-
-<br>
-
-## How to test getting achievement type "single_quest"
-
-1. Open the game console (by default ~).
-2. Enter the command `journal "<journalID>" <stage>`, where:
-- journalID - key `journalID` from the table of your achievement
-- stage - key `stage` from the table of your achievement
-3. If all is well, you will receive a notification that the achievement has been unlocked, and in the achievements widget it will be marked as "unlocked".
-
-<br>
-
-## How to test getting achievement type "multi_quest"
-
-1. Open the game console (by default ~).
-2. The process is the same as in "single_quest", but the 'journal' command must be entered for each quest. The order in which the commands are executed does not matter.
-3. If all is well, you will receive a notification that the achievement has been unlocked, and in the achievements widget it will be marked as "unlocked".
-
-<br>
-
-## How to test getting achievement type "talkto"
-
-There are two options:
-- Find the necessary NPC for the dialogue manually
-- Create a new copy of the NPC and place it right in front of the player using the console command: `player->placeatme "<recordId>" 1,1,1 1`, where `recordId` is the value of the `recordId` key from your achievement table
-
-After that, you should start a dialogue with this NPC. If all is well, you will receive a notification that the achievement has been unlocked, and in the achievements widget it will be marked as "unlocked".
-
-<br>
-
-## How to test getting achievement type "join_faction"
-
-1. Open the game console (by default ~).
-2. Enter the command `PCJoinFaction "<factionId>"`, where `factionId` is the ID of the faction you need to join to get the achievement.
-3. If all is well, you will receive a notification that the achievement has been unlocked, and in the achievements widget it will be marked as "unlocked".
-
-<br>
-
-## How to test getting achievement type "rank_faction"
-
-1. Open the game console (by default ~).
-2. Enter the command `PCJoinFaction "<factionId>"`, where `factionId` is the ID of the faction in which you need to achieve a certain rank to get the achievement.
-3. Enter the command `PCRaiseRank "<factionId>"` the required number of times until you reach the rank required to unlock the achievement.
-4. If all is well, you will receive a notification that the achievement has been unlocked, and in the achievements widget it will be marked as "unlocked".

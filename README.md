@@ -30,9 +30,12 @@ Achievements can be unlocked for:
 - starting a conversation with a specific NPC
 - joining a faction
 - gaining a certain rank in a faction
+- visiting certain cells
+- reading certain books
+- equipping certain items
 - performing different actions a certain number of times (e.g., reading a book 50 times, etc.)
 
-After opening the achievement, the player receives a notification in the upper right corner of the screen (by default). You can change position of notification in the mod settings (version of mod v1.1.1+ or version of framework v1.1.0+ required).
+After opening the achievement, the player receives a notification in the upper right corner of the screen (by default). You can change position of notification in the mod settings.
 
 The `o` button is used by default to open the achievement widget. Note that there are hidden achievements, the number of which is shown at the end of the list.
 
@@ -42,9 +45,15 @@ The hidden achievements feature is used to avoid spoilers and add interest in ob
 
 ## How achievement progress is saved
 
-For each created character - a separate achievement progress. This is implemented by creating a separate storage for each new save directory.
+Since v2.0.0 uses a single achievement progress storage shared between all your characters.
 
-This means that for each new save directory in the path `Documents\My Games\OpenMW\saves` a separate storage will be created, in which the player's progress on achievements will be saved.
+This means that if you get one achievement on one character, it will already be unlocked on another.
+
+The shared achievement progress for all characters was made because it is impossible to get all achievements in one playthrough.
+
+Also note that the tracked progress of player actions (locations visited, books read, etc.) is different for each character. This means that if you read 50 books on one character, and another 50 on another character, you will not get the "read 100 books" achievement. The actions required to unlock one achievement must be completed on one character.
+
+Also in the mod settings, the ability to reset progress on achievements has been added (may be useful when reinstalling the mod or wanting to open achievements again).
 
 <br>
 
@@ -58,7 +67,7 @@ If you want to use the framework without the built-in achievements, it can be do
 
 I heard ya. I've written a special guide on how to add your own achievements. This may be relevant if you use mods that add new content, like quests or NPCs, and you want to get achievements for them too.
 
-The guide is available [here](https://github.com/caz1que/OMW-Achievements/blob/main/docs/your-achievements.md).
+The guide is available [here](https://omw-achievements.readthedocs.io/en/latest/index.html).
 
 <br>
 
@@ -68,6 +77,7 @@ The guide is available [here](https://github.com/caz1que/OMW-Achievements/blob/m
 - [nazz190](https://forums.nexusmods.com/profile/441579-nazz190/) for making "Morrowind Achievement Collection"
 - [Pirate443](https://forums.nexusmods.com/profile/193911948-pirate443/) for russian localization of achievements from MAC.
 - [S3ctor](https://gitlab.com/magicaldave1) and **Qlonever** for advice and help with UI development.
+- **Cybvep**, **illest503**, **m`aiq**, **Sosnoviy Bor** for ideas for mod and achievements.
 - **The OpenMW team**, including every contributor for making OpenMW.
 - **The MOMW team** for being amazing.
 - **Bethesda** for making Morrowind.
