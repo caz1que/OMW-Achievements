@@ -1,13 +1,13 @@
 local types = require('openmw.types')
 local self = require('openmw.self')
 local interfaces = require('openmw.interfaces')
-local ui = require('openmw.ui')
 
 local achievements = require('scripts.omw_achievements.achievements.achievements')
 local frameCount = 0
 
 local function isWerewolf()
 
+    --- Check for unique achievement "Sanies Lupinus"
     for i = 1, #achievements do
         if achievements[i].type == "unique" then
             if achievements[i].id == "werewolf_01" then

@@ -12,7 +12,7 @@ end
 
 local function getFaction()
 
-    local macData = interfaces.storageUtils.getStorage()
+    local omwaData = interfaces.storageUtils.getStorage("achievements")
     local playerFactionsAndRanks = {}
     local playerFactions = types.NPC.getFactions(self.object)
 
@@ -27,7 +27,7 @@ local function getFaction()
 
         --- Check for "join_faction" achievements
         if achievement.type == "join_faction" then
-            if macData:get(achievement.id) == false then
+            if omwaData:get(achievement.id) == false then
                 for f = 1, #playerFactions do
 
                     if type(achievement.factionId) == "string" then
@@ -50,7 +50,7 @@ local function getFaction()
         if achievement.type == "rank_faction" then
             for f = 1, #playerFactionsAndRanks do
                 if achievement.factionId == playerFactionsAndRanks[f].faction and achievement.rank == playerFactionsAndRanks[f].rank then
-                    if macData:get(achievement.id) == false then
+                    if omwaData:get(achievement.id) == false then
                         gettingAchievementEvent(achievements[i])
                     end
                 end

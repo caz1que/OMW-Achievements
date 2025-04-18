@@ -18,14 +18,15 @@ end
 
 local function onQuestUpdate(questId, stage)
 
-    local macData = interfaces.storageUtils.getStorage()
+    local macData = interfaces.storageUtils.getStorage("counters")
+    local omwaData = interfaces.storageUtils.getStorage("achievements")
 
     for i = 1, #achievements do
 
         --- Check for single_quest
         if achievements[i].type == "single_quest" then
             if questId == string.lower(achievements[i].journalID) then
-                if macData:get(achievements[i].id) == false then
+                if omwaData:get(achievements[i].id) == false then
                     if achievements[i].operator(achievements[i], stage) then
                         local achievement = achievements[i]
                         achievement.operator = nil
@@ -66,8 +67,10 @@ local function onQuestUpdate(questId, stage)
 
         end
 
-        --- Check for unique
+        --- Check for unique achievements
         if achievements[i].type == "unique" then
+
+            --- Check #2 for unique achievement "Tribunal's Judgment"
             if achievements[i].id == "killtribunal_01" and questId == "tr_sothasil" and stage >= 100 then
                 if macData:get("vivecIsDead") then
                     self.object:sendEvent('gettingAchievement', {
@@ -79,6 +82,20 @@ local function onQuestUpdate(questId, stage)
                     })
                 end
             end
+
+            --- Check for unique achievement "N'wah and Proud Of It"
+            if achievements[i].id == "beast_nerevarine_01" and questId == "c3_destroydagoth" and stage >= 20 then
+                if types.NPC.record(self.object).race == "khajiit" or types.NPC.record(self.object).race == "argonian" then
+                    self.object:sendEvent('gettingAchievement', {
+                        name = achievements[i].name,
+                        description = achievements[i].description,
+                        icon = achievements[i].icon,
+                        id = achievements[i].id,
+                        bgColor = achievements[i].bgColor
+                    })
+                end
+            end
+
         end
 
     end 

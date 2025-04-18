@@ -1,13 +1,28 @@
 setting_omwachievements_page: 'OpenMW Achievements'
-setting_omwachievements_page_description: 'Adds achievements to the game. Version: v1.1.1'
+setting_omwachievements_page_description: 'Adds achievements to the game. Version: v2.0.0'
 setting_omwachievements_group: 'OpenMW Achievements'
 setting_omwachievements_group_description: 'OpenMW Achievements Settings'
 setting_toggle: 'Toggle Widget'
-setting_toggle_description: 'Toggle Achievements Widget'
+setting_toggle_description: 'Toggle Achievements Widget.'
 setting_show_hidden: 'Show Hidden Achievements'
 setting_show_hidden_description: 'Show Hidden Achievements in Achievements Widget. WARNING: Hidden achievements may contain spoilers. Not recommended for first playthrough.'
 setting_notification_position: "Notification Position"
 setting_notification_position_description: "Position of the pop-up notification that appears after receiving an achievement."
+setting_notification_duration: "Notification Duration"
+setting_notification_duration_description: "Duration of the pop-up notification that appears after receiving an achievement (in seconds)."
+setting_ui_scaling_factor: "UI Scale"
+setting_ui_scaling_factor_description: "Interface scale for the achievements window. For example, if you need to make the interface a little smaller, use the value n < 1 (e. g. 0.8), if larger - n > 1 (e. g. 1.2)."
+setting_notification_scaling_factor: "Notification Scale"
+setting_notification_scaling_factor_description: "Scale of the pop-up notification that appears after receiving an achievement. For example, if you need to make the notification a little smaller, use the value n < 1 (e. g. 0.8), if larger - n > 1 (e. g. 1.2)."
+
+setting_omwachievements_clean_storage_group: "Reset achievement progress"
+setting_omwachievements_group_clean_storage_description: "Reset achievement progress. Can be useful when reinstalling a mod or getting achievements again."
+setting_clean_storage: "Reset achievement progress"
+
+warning_description_text: "Are you sure you want to reset all your achievement progress?"
+warning_button_yes: "Yes"
+warning_button_no: "No"
+warning_setting_button: "Reset"
 
 right_top: "Right Top"
 right_bottom: "Right Bottom"
@@ -88,9 +103,14 @@ sq_07_name: "Servant Of Oblivion"
 sq_07_description: "Complete the tasks of all the Daedra Princes of Morrowind."
 sq_08_name: "Clan Vampire"
 sq_08_description: "Complete your clan specific Vampire quests."
+sq_09_name: "Web of Mephala"
+sq_09_description: "Return all artifacts of Threads of the Webspinner."
 
 book_01_name: "Lost In A Book"
-book_01_description: "Read 50 different books."
+book_01_description: "Read 100 different books."
+
+vivec_lessons_01_name: "36 Lessons"
+vivec_lessons_01_description: "Read all 36 Lessons of Vivec."
 
 killtribunal_01_name: "Tribunal's Judgment"
 killtribunal_01_description: "The Tribunal ends as it began. With death."
@@ -98,8 +118,31 @@ killtribunal_01_description: "The Tribunal ends as it began. With death."
 werewolf_01_name: "Sanies Lupinus"
 werewolf_01_description: "Transform into a Werewolf for the first time."
 
+museum_01_name: "Museum Benefactor"
+museum_01_description: "Help the Mournhold Museum procure all 32 Artifacts."
+
 dayspassed_01_name: "What Main Quest?"
 dayspassed_01_description: "Let 60 in days pass without starting the main quest."
+dayspassed_02_name: "Still a Stranger"
+dayspassed_02_description: "Spend a year in-game."
+
+azurastar_01_name: "Big Soul Hunter"
+azurastar_01_description: "Capture a soul that only Azura's Star can hold."
+
+ordinator_01_name: "Where Did You Get That?"
+ordinator_01_description: "Wear the holy armor of the Ordinators in front of one."
+
+skooma_01_name: "Vaba Maaszi Lhajiito, So-Sura"
+skooma_01_description: "Drink 100 bottles of skooma."
+
+orc_intelligence_01_name: "Who Do You Call Dumb Now?"
+orc_intelligence_01_description: "Reach 100 Intelligence as an Orc."
+nord_speechcraft_01_name: "Not that kind of Thu'um"
+nord_speechcraft_01_description: "Reach 100 Speechcraft as a Nord."
+beast_nerevarine_01_name: "N'wah and Proud Of It"
+beast_nerevarine_01_description: "Become the Nerevarine as Khajiit or Argonian."
+free_slaves_01_name: "Abolitionist"
+free_slaves_01_description: "Free 50 slaves in Morrowind."
 
 tt_01_name: "What's A Scamp Gotta Do?"
 tt_01_description: "Meet Creeper."
@@ -109,6 +152,22 @@ tt_03_name: "Tarhiel's Savior"
 tt_03_description: "Save Tarhiel from his deadly fall."
 tt_04_name: "The Liar"
 tt_04_description: "Meet M'aiq the Liar."
+
+vall_01_name: "Only Spirits And Automatons Remain"
+vall_01_description: "Enter all 24 Dwemer ruins in Morrowind."
+vall_02_name: "Echo from the Past"
+vall_02_description: "Enter all 88 Ancestral Tombs in Morrowind."
+vall_03_name: "Under The Empire"
+vall_03_description: "Enter all 43 Mines in Morrowind."
+vall_04_name: "Dunmer Strongholds"
+vall_04_description: "Enter all 11 Dunmer Strongholds in Morrowind."
+
+eq_01_name: "Straight from Oblivion"
+eq_01_description: "Collect and equip a full suit of Daedric armor."
+eq_02_name: "Light as a Feather"
+eq_02_description: "Collect and equip a full suit of Glass armor."
+eq_03_name: "Aedra Material"
+eq_03_description: "Collect and equip a full suit of Adamantium armor."
 
 fc_01_name: "I Cast A Spell"
 fc_01_description: "Join the Mages Guild."
@@ -146,3 +205,9 @@ fc_17_name: "Factor"
 fc_17_description: "Become Factor of the East Empire Company."
 fc_18_name: "Great House Stronghold"
 fc_18_description: "Finish building your stronghold."
+fc_19_name: "Telvanni Leader"
+fc_19_description: "Become leader of a House Telvanni."
+fc_20_name: "Hlaalu Leader"
+fc_20_description: "Become leader of a House Hlaalu."
+fc_21_name: "Redoran Leader"
+fc_21_description: "Become leader of a House Redoran."

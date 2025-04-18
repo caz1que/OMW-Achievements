@@ -48,12 +48,10 @@ local function updateStorage(data)
     for k, v in pairs(temporaryTable) do
         if k == "OMWACounters" then
             OMWACounters = temporaryTable["OMWACounters"]
-            temporaryTable["OMWACounters"] = nil
         end
 
         if k == "currentSaveDir" then
             print('Found currentSaveDir in temporaryTable')
-            temporaryTable["currentSaveDir"] = nil
         end
     end
 
@@ -61,7 +59,7 @@ local function updateStorage(data)
         OMWACounters = stringToTable(OMWACounters)
         for i, v in ipairs(OMWACounters) do
             if temporaryTable[v] then
-                temporaryTable[v] = stringToTable(v)
+                temporaryTable[v] = stringToTable(temporaryTable[v])
             end
         end
     end
@@ -69,6 +67,24 @@ local function updateStorage(data)
     for k, v in pairs(temporaryTable) do
         macData:set(k, v)
     end
+
+end
+
+local function createGlobalStorage()
+
+    local omwaData = storage.playerSection('OMWA_Global_Section')
+
+    omwaData:setLifeTime(storage.LIFE_TIME.Persistent)
+
+    --- Initialize storage for achievements
+    for i = 1, #achievements do 
+        local achievementSection = omwaData:get(achievements[i].id)
+        if achievementSection == nil then
+            omwaData:set(achievements[i].id, false)
+        end
+    end
+    
+    return omwaData
 
 end
 
@@ -80,17 +96,25 @@ local function createTemporaryPlayerSection()
 
     macData:setLifeTime(storage.LIFE_TIME.Temporary)
 
-    --- Initialize storage for achievements
-    for i = 1, #achievements do 
-        local achievementSection = macData:get(achievements[i].id)
-        if achievementSection == nil then
-            macData:set(achievements[i].id, false)
-        end
-    end
-
     --- Counters for unique achievements
     if macData:get("bookRead") == nil then
         macData:set("bookRead", {})
+    end
+
+    if macData:get("visitedCells") == nil then
+        macData:set("visitedCells", {})
+    end
+
+    if macData:get("museumArtifacts") == nil then
+        macData:set("museumArtifacts", {})
+    end
+
+    if macData:get("skoomaBottles") == nil then
+        macData:set("skoomaBottles", 0)
+    end
+
+    if macData:get("slavesCounter") == nil then
+        macData:set("slavesCounter", 0)
     end
 
     return macData
@@ -105,29 +129,43 @@ local function createPlayerSection()
 
     macData:setLifeTime(storage.LIFE_TIME.Persistent)
 
-    --- Initialize storage for achievements
-    for i = 1, #achievements do 
-        local achievementSection = macData:get(achievements[i].id)
-        if achievementSection == nil then
-            macData:set(achievements[i].id, false)
-        end
-    end
-
     --- Counters for unique achievements
     if macData:get("bookRead") == nil then
         macData:set("bookRead", {})
+    end
+
+    if macData:get("visitedCells") == nil then
+        macData:set("visitedCells", {})
+    end
+
+    if macData:get("museumArtifacts") == nil then
+        macData:set("museumArtifacts", {})
+    end
+
+    if macData:get("skoomaBottles") == nil then
+        macData:set("skoomaBottles", 0)
+    end
+
+    if macData:get("slavesIds") == nil then
+        macData:set("slavesIds", {})
     end
 
     return macData
 
 end
 
-local function getStorage()
-    if currentSaveDir ~= nil then
+local function getStorage(section)
+
+    if section == "counters" and currentSaveDir ~= nil then
         return createPlayerSection()
-    else
+    elseif section == "counters" and currentSaveDir == nil then
         return createTemporaryPlayerSection()
     end
+
+    if section == "achievements" then
+        return createGlobalStorage()
+    end
+
 end
 
 local function onSave()
@@ -158,7 +196,7 @@ end
 return {
     interfaceName = "storageUtils",
     interface = {
-        version = 1,
+        version = 2,
         getStorage = getStorage,
     },
     eventHandlers = {

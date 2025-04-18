@@ -4,9 +4,7 @@ local self = require('openmw.self')
 
 local function getDaysPassed()
     local daysPassed = math.floor(core.getGameTime() / time.day)
-    if daysPassed >= 60 then
-        self.object:sendEvent('daysPassed')
-    end
+    self.object:sendEvent('daysPassed', { days = daysPassed } )
 end
 
 return {

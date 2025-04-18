@@ -6,11 +6,13 @@ local core = require('openmw.core')
 local l10n = core.l10n('OmwAchievements')
 
 local storage = require('openmw.storage')
-local playerSettings = storage.playerSection('SettingsPlayerOmwAchievements')
+local playerSettings = storage.playerSection('Settings/OmwAchievements/Options')
 
 local notification = {}
 
 function notification.createnotification(icon_path, achName, achDescription, bg)
+
+    local scale_factor = playerSettings:get('notification_scaling_factor')
 
     if playerSettings:get('notification_position') == "right_top" then
         notificationPosition = v2(.97, .03)
@@ -27,9 +29,9 @@ function notification.createnotification(icon_path, achName, achDescription, bg)
     end
 
     local screenSize = ui.screenSize()
-    local icon_size = screenSize.y * 0.05
+    local icon_size = screenSize.y * 0.05 * scale_factor
     local width_ratio = 0.19
-    local widget_width = screenSize.x * width_ratio
+    local widget_width = screenSize.x * width_ratio * scale_factor
     local widget_height = icon_size * 1.8
 
     if bg ~= nil then
@@ -50,9 +52,9 @@ function notification.createnotification(icon_path, achName, achDescription, bg)
         icon_bg = "Icons\\MAC\\icnBackgroundGet.tga"
     end
 
-    local getTextSize = (screenSize.x * 0.01)
-    local nameTextSize = (screenSize.x * 0.008)
-    local descriptionTextSize = (screenSize.x * 0.008)
+    local getTextSize = (screenSize.x * 0.01) * scale_factor
+    local nameTextSize = (screenSize.x * 0.008) * scale_factor
+    local descriptionTextSize = (screenSize.x * 0.008) * scale_factor
 
     local achievementLogo = {
         type = ui.TYPE.Image,
@@ -132,14 +134,14 @@ function notification.createnotification(icon_path, achName, achDescription, bg)
     local emptyHBox = {
         type = ui.TYPE.Widget,
         props = {
-            size = v2(300, 6)
+            size = v2(300, screenSize.y*0.0056)
         }
     }
 
     local emptyVBox = {
         type = ui.TYPE.Widget,
         props = {
-            size = v2(7, 80)
+            size = v2(screenSize.y*0.0065, 80)
         }
     }
 

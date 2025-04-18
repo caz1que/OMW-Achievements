@@ -1,5 +1,5 @@
 setting_omwachievements_page: 'Достижения OpenMW'
-setting_omwachievements_page_description: 'Добавляет достижения в игру. Версия: v1.1.1'
+setting_omwachievements_page_description: 'Добавляет достижения в игру. Версия: v2.0.0'
 setting_omwachievements_group: 'Достижения OpenMW'
 setting_omwachievements_group_description: 'Настройки OpenMW достижений.'
 setting_toggle: 'Открыть виджет'
@@ -8,6 +8,21 @@ setting_show_hidden: 'Показывать скрытые достижения'
 setting_show_hidden_description: 'Показывать скрытые достижения в окне с достижениями. ВНИМАНИЕ: Скрытые достижения могут содержать спойлеры. Не рекомендуется при первом прохождении.'
 setting_notification_position: "Положение уведомления"
 setting_notification_position_description: "Положение уведомления, появляющегося после получения достижения."
+setting_notification_duration: "Продолжительность уведомления"
+setting_notification_duration_description: "Продолжительность уведомления, появляющегося после получения достижения (в секундах)."
+setting_ui_scaling_factor: "Масштаб интерфейса"
+setting_ui_scaling_factor_description: "Масштаб интерфейса для окна достижений. Если необходимо сделать интерфейс меньше используется значение n < 1 (например, 0.8), если больше - n > 1 (например, 1.2)."
+setting_notification_scaling_factor: "Масштаб уведомления"
+setting_notification_scaling_factor_description: "Масштаб уведомления, появляющегося после получения достижения. Если необходимо сделать уведомление меньше используется значение n < 1 (например, 0.8), если больше - n > 1 (например, 1.2)."
+
+setting_omwachievements_clean_storage_group: "Сбросить прогресс достижений"
+setting_omwachievements_group_clean_storage_description: "Сбросить прогресс достижений. Может быть полезно при переустановке мода или желании получить достижения еще раз."
+setting_clean_storage: "Сбросить прогресс достижений"
+
+warning_description_text: "Вы уверены, что хотите сбросить свой прогресс по достижениям?"
+warning_button_yes: "Да"
+warning_button_no: "Нет"
+warning_setting_button: "Сбросить"
 
 right_top: "Вверху справа"
 right_bottom: "Внизу справа"
@@ -88,9 +103,14 @@ sq_07_name: "Последователь Забвения"
 sq_07_description: "Выполните задания всех принцев Даэдра в Морровинде."
 sq_08_name: "Клан Вампиров"
 sq_08_description: "Выполните задания вашего клана Вампиров."
+sq_09_name: "Нити Прядильщицы Сетей"
+sq_09_description: "Верните все артефакты Нитей Прядильщицы Сетей."
 
 book_01_name: "Книжный червь"
-book_01_description: "Прочитайте 50 разных книг."
+book_01_description: "Прочитайте 100 разных книг."
+
+vivec_lessons_01_name: "36 Уроков"
+vivec_lessons_01_description: "Прочтите все 36 Уроков Вивека."
 
 killtribunal_01_name: "Приговор Трибуналу"
 killtribunal_01_description: "Трибунал заканчивается так же, как и начался. Смертью."
@@ -98,8 +118,31 @@ killtribunal_01_description: "Трибунал заканчивается так
 werewolf_01_name: "Гнойный люпинус"
 werewolf_01_description: "Впервые превратитесь в оборотня."
 
+museum_01_name: "Музейный меценат"
+museum_01_description: "Помогите музею Морнхолда получить все 32 артефакта."
+
 dayspassed_01_name: "Какое главное задание?"
 dayspassed_01_description: "Не начинайте главное задание более 60 дней."
+dayspassed_02_name: "По-прежнему чужеземец"
+dayspassed_02_description: "Проведите год игрового времени."
+
+azurastar_01_name: "Собиратель душ"
+azurastar_01_description: "Захватите душу, которую может вместить только Звезда Азуры."
+
+ordinator_01_name: "Где ты это взял?"
+ordinator_01_description: "Наденьте священные доспехи Ординаторов перед одним из них."
+
+skooma_01_name: "Vaba Maaszi Lhajiito, So-Sura"
+skooma_01_description: "Выпейте 100 бутылок скуумы."
+
+orc_intelligence_01_name: "Ну и кто здесь тупица?"
+orc_intelligence_01_description: "Развейте атрибут Интеллекта до 100, будучи орком."
+nord_speechcraft_01_name: "Ту'ум"
+nord_speechcraft_01_description: "Развейте навык Красноречия до 100, будучи нордом."
+beast_nerevarine_01_name: "Н'Вах и Горжусь Этим"
+beast_nerevarine_01_description: "Станьте Нереварином, будучи Каджитом или Аргонианином."
+free_slaves_01_name: "Аболиционист"
+free_slaves_01_description: "Освободите 50 рабов в Морровинде."
 
 tt_01_name: "Что еще может делать скамп?"
 tt_01_description: "Познакомьтесь с Ползуном."
@@ -109,6 +152,22 @@ tt_03_name: "Спаситель Тархиэля"
 tt_03_description: "Спасите Тархиэля от смертельного падения."
 tt_04_name: "Лжец"
 tt_04_description: "Познакомьтесь с М'Айком Лжецом."
+
+vall_01_name: "Здесь лишь призраки и механизмы..."
+vall_01_description: "Исследуйте все 24 двемерских развалин."
+vall_02_name: "Эхо прошлого"
+vall_02_description: "Исследуйте все 88 родовых гробниц в Морровинде."
+vall_03_name: "В землях Империи"
+vall_03_description: "Исследуйте все 43 шахты в Морровинде."
+vall_04_name: "Данмерские крепости"
+vall_04_description: "Исследуйте все 11 данмерских крепостей в Морровинде."
+
+eq_01_name: "Прямиком из Обливиона"
+eq_01_description: "Соберите и экипируйте полный комплект даэдрической брони."
+eq_02_name: "Легкий как перышко"
+eq_02_description: "Соберите и экипируйте полный комплект стеклянной брони."
+eq_03_name: "Материал Аэдры"
+eq_03_description: "Соберите и экипируйте полный комплект адамантиновой брони."
 
 fc_01_name: "Я прочитал заклинание"
 fc_01_description: "Вступите в Гильдию магов."
@@ -146,3 +205,9 @@ fc_17_name: "Фактор"
 fc_17_description: "Станьте фактором Восточной Имперской Компании."
 fc_18_name: "Крепость Великого Дома"
 fc_18_description: "Завершите строительство своей крепости."
+fc_19_name: "Глава Телванни"
+fc_19_description: "Станьте лидером Великого Дома Телванни."
+fc_20_name: "Глава Хлаалу"
+fc_20_description: "Станьте лидером Великого Дома Хлаалу."
+fc_21_name: "Глава Редоран"
+fc_21_description: "Станьте лидером Великого Дома Редоран."

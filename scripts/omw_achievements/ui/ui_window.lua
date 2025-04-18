@@ -10,20 +10,12 @@ local interfaces = require('openmw.interfaces')
 
 --- ################################# ---
 
-local playerSettings = storage.playerSection('SettingsPlayerOmwAchievements')
+local playerSettings = storage.playerSection('Settings/OmwAchievements/Options')
 local achievements = require('scripts.omw_achievements.achievements.achievements')
 
 local v2 = util.vector2
 local showable = nil
 local achievementsAmount = #achievements
-
-local screenSize = ui.screenSize()
-local icon_size = screenSize.y * 0.06
-
-local width_ratio = 0.25
-local height_ratio = 0.65
-local widget_width = screenSize.x * width_ratio
-local widget_height = screenSize.y * height_ratio
 
 --- ################################# ---
 
@@ -97,7 +89,7 @@ end
 
 local function hiddenAchievements(achievementsTable)
 
-    local macData = interfaces.storageUtils.getStorage()
+    local macData = interfaces.storageUtils.getStorage("achievements")
 
     local count = 0
     local hiddenIds = {}
@@ -189,9 +181,23 @@ local function getPageRangeLast(amount, lastAmount)
     return startLastIndex, endLastIndex
 end
 
+--- ################################# ---
+
 local function createAchievement(name, description, icon_path, icon_color, icon_bg)
 
-    local descriptionTextSize = screenSize.y * 0.0160
+    local screenSize = ui.screenSize()
+
+    local width_ratio = 0.25
+    local height_ratio = 0.65
+
+    local scale_factor = playerSettings:get('ui_scaling_factor')
+
+    local widget_width = screenSize.x * width_ratio * scale_factor
+
+    local nameTextSize = screenSize.x * 0.0094 * scale_factor
+    local descriptionTextSize = screenSize.y * 0.0160 * scale_factor
+
+    local icon_size = screenSize.y * 0.06 * scale_factor
 
     local achievementLogo = {
         type = ui.TYPE.Image,
@@ -231,7 +237,7 @@ local function createAchievement(name, description, icon_path, icon_color, icon_
         type = ui.TYPE.Text,
         props = {
             text = name,
-            textSize = screenSize.x * 0.0094
+            textSize = nameTextSize
         }
     }
 
@@ -313,7 +319,19 @@ end
 
 local function createAchievementList(page, achievementsTable)
 
-    local macData = interfaces.storageUtils.getStorage()
+    local screenSize = ui.screenSize()
+
+    local width_ratio = 0.25
+    local height_ratio = 0.65
+
+    local scale_factor = playerSettings:get('ui_scaling_factor')
+
+    local widget_width = screenSize.x * width_ratio * scale_factor
+    local widget_height = screenSize.y * height_ratio * scale_factor
+
+    local icon_size = screenSize.y * 0.06 * scale_factor
+
+    local macData = interfaces.storageUtils.getStorage("achievements")
     
     local achievementsFormatted = hiddenAchievements(achievementsTable).achievementsFormatted
     local achievementsCompleted = hiddenAchievements(achievementsTable).achievementsCompleted
@@ -493,6 +511,19 @@ end
 
 local function createMainWindow(isButtonBackVisible, isButtonForwardVisible, currentPage, achievementsTable)
 
+    local screenSize = ui.screenSize()
+
+    local width_ratio = 0.25
+    local height_ratio = 0.65
+
+    local scale_factor = playerSettings:get('ui_scaling_factor')
+
+    local widget_width = screenSize.x * width_ratio * scale_factor
+    local widget_height = screenSize.y * height_ratio * scale_factor
+
+    local nameTextSize = screenSize.x * 0.0094 * scale_factor
+    local descriptionTextSize = screenSize.y * 0.0160 * scale_factor
+
     local menu_block_path = "Textures\\menu_head_block_middle.dds"
 
     local achievementsFormatted = hiddenAchievements(achievementsTable).achievementsFormatted
@@ -503,12 +534,21 @@ local function createMainWindow(isButtonBackVisible, isButtonForwardVisible, cur
 
     local icon_size = screenSize.y * 0.06
     local menu_block_width = widget_width * 0.30
-    local header_height = widget_height * 0.05
+    local header_height = widget_height * 0.05 * scale_factor
 
-    local topButtonHeight = 23
-    local text_size = 13.5
+    local topButtonHeight = screenSize.y * 0.0213 * scale_factor
+    local topButtonWidth = screenSize.y * 0.09 * scale_factor
+    local underButtonWidth = screenSize.y * 0.074 * scale_factor
 
-    local headerText =  l10n('header_text') .. " (" .. tostring(#achievementsCompleted) .. "/" .. tostring(achievementsAmount) .. ")"
+    local text_size = screenSize.y * 0.015 * scale_factor
+
+    if screenSize.y < 901 or tonumber(scale_factor) < 0.8 then
+        buttonTemplate = I.MWUI.templates.borders
+    else
+        buttonTemplate = I.MWUI.templates.bordersThick
+    end
+
+    local headerText = l10n('header_text') .. " (" .. tostring(#achievementsCompleted) .. "/" .. tostring(achievementsAmount) .. ")"
 
     buttonTopColors = {}
 
@@ -592,17 +632,10 @@ local function createMainWindow(isButtonBackVisible, isButtonForwardVisible, cur
         }
     }
 
-    local emptyVBox = {
-        type = ui.TYPE.Widget,
-        props = {
-            size = v2(7, 80)
-        }
-    }
-
     local achievementsList = {
         type = ui.TYPE.Flex,
         props = {
-            size = v2(widget_width * 0.85, icon_size*8),
+            size = v2(widget_width * 0.85, icon_size * 8 * scale_factor),
             horizontal = false,
             anchor = v2(0, 0),
             relativePosition = v2(0, 0)
@@ -615,19 +648,19 @@ local function createMainWindow(isButtonBackVisible, isButtonForwardVisible, cur
         props = {
             anchor = v2(.5, .5),
             relativePosition = v2(.5, .5),
-            size = v2(widget_width * 0.85, icon_size*8)
+            size = v2(widget_width * 0.85, icon_size * 8 * scale_factor)
         },
         content = ui.content({achievementsList})
     }
 
     local buttonBack = {
         type = ui.TYPE.Widget,
-        template = I.MWUI.templates.bordersThick,
+        template = buttonTemplate,
         props = {
             name = "buttonBack",
             anchor = v2(0, .5),
             relativePosition = v2(0, .5),
-            size = v2(80, topButtonHeight),
+            size = v2(underButtonWidth, topButtonHeight),
             visible = isButtonBackVisible,
             propagateEvents = false
         },
@@ -659,11 +692,11 @@ local function createMainWindow(isButtonBackVisible, isButtonForwardVisible, cur
 
     local buttonForward = {
         type = ui.TYPE.Widget,
-        template = I.MWUI.templates.bordersThick,
+        template = buttonTemplate,
         props = {
             anchor = v2(1, .5),
             relativePosition = v2(1, .5),
-            size = v2(80, topButtonHeight),
+            size = v2(underButtonWidth, topButtonHeight),
             visible = isButtonForwardVisible,
             propagateEvents = false
         },
@@ -710,7 +743,7 @@ local function createMainWindow(isButtonBackVisible, isButtonForwardVisible, cur
             name = "buttonsBox",
             anchor = v2(.5, .5),
             relativePosition = v2(.5, .5),
-            size = v2(widget_width * 0.65, 30)
+            size = v2(widget_width * 0.65, topButtonHeight + (topButtonHeight * 0.3))
         },
         content = ui.content(
             {buttonBack, pageText, buttonForward}
@@ -719,12 +752,12 @@ local function createMainWindow(isButtonBackVisible, isButtonForwardVisible, cur
 
     local buttonAll = {
         type = ui.TYPE.Widget,
-        template = I.MWUI.templates.bordersThick,
+        template = buttonTemplate,
         props = {
             name = "buttonAll",
             anchor = v2(0, .5),
             -- relativePosition = v2(0, .5),
-            size = v2(50, topButtonHeight),
+            size = v2((topButtonWidth / 2), topButtonHeight),
             visible = true
         },
         content = ui.content {
@@ -751,11 +784,10 @@ local function createMainWindow(isButtonBackVisible, isButtonForwardVisible, cur
 
     local buttonAchieved = {
         type = ui.TYPE.Widget,
-        template = I.MWUI.templates.bordersThick,
+        template = buttonTemplate,
         props = {
             anchor = v2(0, .5),
-            -- relativePosition = v2(0, .5),
-            size = v2(100, topButtonHeight),
+            size = v2(topButtonWidth, topButtonHeight),
             visible = true
         },
         content = ui.content {
@@ -782,11 +814,11 @@ local function createMainWindow(isButtonBackVisible, isButtonForwardVisible, cur
 
     local buttonUnachieved = {
         type = ui.TYPE.Widget,
-        template = I.MWUI.templates.bordersThick,
+        template = buttonTemplate,
         props = {
             anchor = v2(0, .5),
             -- relativePosition = v2(0, .5),
-            size = v2(100, topButtonHeight),
+            size = v2(topButtonWidth * 1.2, topButtonHeight),
             visible = true
         },
         content = ui.content {
@@ -815,15 +847,16 @@ local function createMainWindow(isButtonBackVisible, isButtonForwardVisible, cur
         type = ui.TYPE.Widget,
         props = {
             anchor = v2(0, .5),
-            -- relativePosition = v2(.5, .5),
-            size = v2(10, 30)
+            size = v2(10, topButtonHeight)
         }
     }
 
     local topButtonsFlex = {
         type = ui.TYPE.Flex,
         props = {
-            horizontal = true
+            horizontal = true,
+            arrange = ui.ALIGNMENT.Center,
+            align = ui.ALIGNMENT.Start
         },
         content = ui.content({
             buttonAll,
@@ -839,7 +872,7 @@ local function createMainWindow(isButtonBackVisible, isButtonForwardVisible, cur
             name = "topButtonsBox",
             anchor = v2(.5, .5),
             relativePosition = v2(.5, .5),
-            size = v2(widget_width * 0.85, 30)
+            size = v2(widget_width * 0.85, topButtonHeight + (topButtonHeight * 0.3))
         },
         content = ui.content(
             {topButtonsFlex}
@@ -951,7 +984,7 @@ end
 
 local function onKeyPress(key)
 
-    if key.symbol == playerSettings:get('toggle') then
+    if key.code == playerSettings:get('toggle_omwa') then
         if showable == nil then
             I.UI.setMode('Interface', {windows = {}})
             current_MAC_section = "all"
@@ -995,6 +1028,35 @@ local function onKeyPress(key)
 
 end
 
+local function onMouseWheel(vertical, horizontal)
+
+    if showable == true then
+        if vertical == 1 then
+            if currentPage < calculatedPageAmount then
+                if currentPage == calculatedPageAmount-1 then
+                    achievementWindow:destroy()
+                    createMainWindow(true, false, currentPage+1, getAchievements()) 
+                else
+                    achievementWindow:destroy()
+                    createMainWindow(true, true, currentPage+1, getAchievements())
+                end 
+            end 
+        end
+
+        if vertical == -1 then
+            if currentPage == 2 then
+                achievementWindow:destroy()
+                createMainWindow(false, true, currentPage-1, getAchievements())
+            end
+            if currentPage ~= 2 and currentPage > 2 then
+                achievementWindow:destroy()
+                createMainWindow(true, true, currentPage-1, getAchievements())
+            end
+        end
+    end
+
+end 
+
 local function onInputAction(id)
 
     if showable == true then
@@ -1015,6 +1077,7 @@ end
 return {
     engineHandlers = {
         onKeyPress = onKeyPress,
-        onInputAction = onInputAction
+        onInputAction = onInputAction,
+        onMouseWheel = onMouseWheel
     }
 }

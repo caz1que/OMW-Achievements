@@ -12,6 +12,10 @@ local v2 = util.vector2
 local notification = require('scripts.omw_achievements.ui.createnotification')
 local achievements = require('scripts.omw_achievements.achievements.achievements')
 
+local playerSettings = storage.playerSection('Settings/OmwAchievements/Options')
+
+local sk00maUtils = require('scripts.omw_achievements.utils.sk00maUtils')
+
 achievementQueue = {}
 isNotificationShowable = false
 frameCount = 0
@@ -19,14 +23,14 @@ frameCount = 0
 local function showNextAchievement()
     if #achievementQueue > 0 then
         local nextAchievement = table.remove(achievementQueue, 1)
-        notification.createnotification(nextAchievement.icon, nextAchievement.name, nextAchievement.description)
+        notification.createnotification(nextAchievement.icon, nextAchievement.name, nextAchievement.description, nextAchievement.bg)
         isNotificationShowable = true
     end
 end
 
 local function gettingAchievement(data)
 
-    local macData = interfaces.storageUtils.getStorage()
+    local macData = interfaces.storageUtils.getStorage("achievements")
 
     if macData:get(data.id) == false then
 
@@ -46,52 +50,10 @@ local function gettingAchievement(data)
 
 end
 
-local function not_contains(table, value)
-    for _, v in ipairs(table) do
-        if v == value then
-            return false
-        end
-    end
-    return true
-end
-
-local function getBookAchievement()
-
-    for i = 1, #achievements do
-        if achievements[i].id == "book_01" then
-            return achievements[i]
-        end
-    end
-
-end
-
-local function bookRead(data)
-
-    local macData = interfaces.storageUtils.getStorage()
-
-    local bookReadTable = macData:getCopy('bookRead')
-
-    if not_contains(bookReadTable, data.id) then
-        table.insert(bookReadTable, data.id)
-        macData:set('bookRead', bookReadTable)
-    end
-
-    if #bookReadTable == 51 then
-        local bookAchievement = getBookAchievement()
-        self.object:sendEvent('gettingAchievement', {
-            name = bookAchievement.name,
-            description = bookAchievement.description,
-            icon = bookAchievement.icon,
-            id = bookAchievement.id,
-            bgColor = bookAchievement.bgColor
-        })
-    end
-    
-end
-
 local function vivecIsDead(data)
 
-    local macData = interfaces.storageUtils.getStorage()
+    --- Check #1 for unique achievement "Tribunal's Judgment"
+    local macData = interfaces.storageUtils.getStorage("counters")
     macData:set('vivecIsDead', true)
 
     if types.Player.quests(self.object)['tr_sothasil'].stage >= 100 then
@@ -106,9 +68,11 @@ local function vivecIsDead(data)
 
 end
 
-local function daysPassed()
+local function daysPassed(data)
     for i = 1, #achievements do
-        if achievements[i].type == "unique" and achievements[i].id == "dayspassed_01" then
+
+        --- Check for unique achievement "What Main Quest?"
+        if achievements[i].type == "unique" and achievements[i].id == "dayspassed_01" and data.days >= 60 then
             if types.Player.quests(self.object)["a1_1_findspymaster"].stage < 14 then
                 self.object:sendEvent('gettingAchievement', {
                     name = achievements[i].name,
@@ -119,13 +83,26 @@ local function daysPassed()
                 })
             end
         end
+
+        --- Check for unique achievement "Still a Stranger"
+        if achievements[i].type == "unique" and achievements[i].id == "dayspassed_02" and data.days >= 365 then
+            self.object:sendEvent('gettingAchievement', {
+                name = achievements[i].name,
+                description = achievements[i].description,
+                icon = achievements[i].icon,
+                id = achievements[i].id,
+                bgColor = achievements[i].bgColor
+            })
+        end
+
     end
 end
 
 function onFrame(dt)
     if isNotificationShowable == true then
+        notificationDuration = playerSettings:get('notification_duration')
         frameCount = frameCount + 1
-        if frameCount == 150 then
+        if frameCount == (notificationDuration * 60) then
             isNotificationShowable = false
             achievementNotification:destroy()
             frameCount = 0
@@ -137,7 +114,6 @@ end
 return {
     eventHandlers = {
         gettingAchievement = gettingAchievement,
-        bookRead = bookRead,
         vivecIsDead = vivecIsDead,
         daysPassed = daysPassed
     },

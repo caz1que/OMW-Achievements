@@ -1,5 +1,8 @@
 local core = require('openmw.core')
 local l10n = core.l10n('OmwAchievements')
+local types = require('openmw.types')
+
+local slot = types.Actor.EQUIPMENT_SLOT
 
 local baseAchievements = {
     {
@@ -479,6 +482,273 @@ local baseAchievements = {
         hidden = true
     },
     {
+        type = "visit_all",
+        name = l10n('vall_01_name'),
+        description = l10n('vall_01_description'),
+        cells = {
+            "aleft",
+            "arkngthand, hall of centrifuge",
+            "arkngthunch-sturdumz",
+            "gnisis, bethamez",
+            "bthanchend",
+            "bthuand",
+            "bthungthumz",
+            "dagoth ur, outer facility",
+            "druscashti, upper level",
+            "endusal, kagrenac's study",
+            "galom daeus, entry",
+            "mudan, lost dwemer checkpoint",
+            "mzahnch",
+            "mzanchend",
+            "mzuleft",
+            "nchardahrk",
+            "nchardumz",
+            "nchuleft",
+            "nchuleftingth, upper levels",
+            "nchurdamz",
+            "odrosal, dwemer training academy",
+            "tureynulal, kagrenac's library",
+            "vemynal, outer fortress",
+            "bamz-amschend, hearthfire hall"
+        },
+        icon = "Icons\\MAC\\icn_DwemerRuins.dds",
+        bgColor = "blue",
+        id = "vall_01",
+        hidden = false
+    },
+    {
+        type = "visit_all",
+        name = l10n('vall_02_name'),
+        description = l10n('vall_02_description'),
+        cells = {
+            "lleran ancestral tomb",
+            "othrelas ancestral tomb",
+            "sandas ancestral tomb",
+            "sarano ancestral tomb",
+            "aryon ancestral tomb",
+            "dareleth ancestral tomb",
+            "drath ancestral tomb",
+            "drinith ancestral tomb",
+            "fadathram ancestral tomb",
+            "helas ancestral tomb",
+            "indaren ancestral tomb",
+            "llando ancestral tomb",
+            "omalen ancestral tomb",
+            "rothan ancestral tomb",
+            "salvel ancestral tomb",
+            "sandus ancestral tomb",
+            "saren ancestral tomb",
+            "thalas ancestral tomb",
+            "andalen ancestral tomb",
+            "arano ancestral tomb",
+            "arenim ancestral tomb",
+            "arys ancestral tomb",
+            "baram ancestral tomb",
+            "beran ancestral tomb",
+            "dreloth ancestral tomb",
+            "hlaalu ancestral tomb",
+            "hlervi ancestral tomb",
+            "hlervu ancestral tomb",
+            "marvani ancestral tomb",
+            "omaren ancestral tomb",
+            "ravel ancestral tomb",
+            "raviro ancestral tomb",
+            "redas ancestral tomb",
+            "releth ancestral tomb",
+            "sadryon ancestral tomb",
+            "savel ancestral tomb",
+            "verelnim ancestral tomb",
+            "andrano ancestral tomb",
+            "andrethi ancestral tomb",
+            "heran ancestral tomb",
+            "norvayn ancestral tomb",
+            "samarys ancestral tomb",
+            "sarys ancestral tomb",
+            "thelas ancestral tomb",
+            "andalor ancestral tomb",
+            "aralen ancestral tomb",
+            "favel ancestral tomb",
+            "ienith ancestral tomb",
+            "nerano ancestral tomb",
+            "sethan ancestral tomb",
+            "thiralas ancestral tomb",
+            "venim ancestral tomb",
+            "alas ancestral tomb",
+            "andas ancestral tomb",
+            "andules ancestral tomb",
+            "aran ancestral tomb",
+            "arethan ancestral tomb",
+            "dulo ancestral tomb",
+            "gimothran ancestral tomb",
+            "helan ancestral tomb",
+            "maren ancestral tomb",
+            "serano ancestral tomb",
+            "vandus ancestral tomb",
+            "velas ancestral tomb",
+            "andavel ancestral tomb",
+            "dralas ancestral tomb",
+            "drethan ancestral tomb",
+            "nelas ancestral tomb",
+            "orethi ancestral tomb",
+            "sarethi ancestral tomb",
+            "senim ancestral tomb",
+            "alen ancestral tomb",
+            "falas ancestral tomb",
+            "ginith ancestral tomb",
+            "heleran ancestral tomb",
+            "hleran ancestral tomb",
+            "indalen ancestral tomb",
+            "llervu ancestral tomb",
+            "randas ancestral tomb",
+            "reloth ancestral tomb",
+            "rethandus ancestral tomb",
+            "salothan ancestral tomb",
+            "salothran ancestral tomb",
+            "seran ancestral tomb",
+            "telvayn ancestral tomb",
+            "tharys ancestral tomb",
+            "uveran ancestral tomb",
+            "veloth ancestral tomb"
+        },
+        icon = "Icons\\MAC\\icn_echoOfThePast.dds",
+        bgColor = "blue",
+        id = "vall_02",
+        hidden = false
+    },
+    {
+        type = "visit_all",
+        name = l10n('vall_03_name'),
+        description = l10n('vall_03_description'),
+        cells = {
+            "caldera mine",
+            "elith-pal mine",
+            "mausur caverns",
+            "sudanit mine",
+            "vassir-didanat cave",
+            "yanemus mine",
+            "dissapla mine",
+            "dunirai caverns",
+            "halit mine",
+            "massama cave",
+            "yassu mine",
+            "abaelun mine",
+            "abaesen-pulu egg mine",
+            "abebaal egg mine",
+            "ahallaraddon egg mine",
+            "ahanibi-malmus egg mine",
+            "akimaes-ilanipu egg mine",
+            "asha-ahhe egg mine",
+            "ashimanu egg mine",
+            "band egg mine",
+            "eluba-addon egg mine",
+            "eretammus-sennammu egg mine",
+            "gnisis, eggmine",
+            "hairat-vassamsi egg mine",
+            "hawia egg mine",
+            "inanius egg mine",
+            "madas-zebba egg mine",
+            "maelu egg mine",
+            "maesa-shammus egg mine",
+            "matus-akin egg mine",
+            "missir-dadalit egg mine",
+            "mudan-mul egg mine",
+            "panabanit-nimawia egg mine",
+            "panud egg mine",
+            "pudai egg mine",
+            "sarimisun-assa egg mine",
+            "setus egg mine",
+            "shulk egg mine",
+            "shurdan-raplay egg mine",
+            "sinamusa egg mine",
+            "sinarralit egg mine",
+            "sur egg mine",
+            "vansunalit egg mine",
+            "zalkin-sul egg mine"
+        },
+        icon = "Icons\\MAC\\icn_underTheEmpire.dds",
+        bgColor = "blue",
+        id = "vall_03",
+        hidden = false
+    },
+    {
+        type = "visit_all",
+        name = l10n('vall_04_name'),
+        description = l10n('vall_04_description'),
+        cells = {
+            "andasreth",
+            "berandas",
+            "valenvaryon",
+            "indoranyon",
+            "kogoruhn",
+            "marandus",
+            "rotheran",
+            "telasero",
+            "falasmaryon",
+            "falensarano",
+            "hlormaren"
+        },
+        icon = "Icons\\MAC\\icn_dunmerStr.dds",
+        bgColor = "blue",
+        id = "vall_04",
+        hidden = false
+    },
+    {
+        type = "unique",
+        name = l10n('museum_01_name'),
+        description = l10n('museum_01_description'),
+        icon = "Icons\\MAC\\icn_Museum.dds",
+        bgColor = "purple",
+        id = "museum_01",
+        hidden = false
+    },
+    {
+        type = "read_all",
+        name = l10n('vivec_lessons_01_name'),
+        description = l10n('vivec_lessons_01_description'),
+        books = {
+            "bookskill_athletics3",
+            "bookskill_alchemy4",
+            "bookskill_blunt weapon4",
+            "bookskill_mysticism3",
+            "bookskill_axe4",
+            "bookskill_armorer3",
+            "bookskill_block4",
+            "bookskill_athletics4",
+            "bookskill_blunt weapon5",
+            "bookskill_short blade4",
+            "bookskill_unarmored3",
+            "bookskill_heavy armor5",
+            "bookskill_alteration4",
+            "bookskill_spear3",
+            "bookskill_unarmored4",
+            "bookskill_axe5",
+            "bookskill_long blade3",
+            "bookskill_alchemy5",
+            "bookskill_enchant4",
+            "bookskill_long blade4",
+            "bookskill_light armor4",
+            "bookskill_medium armor4",
+            "bookskill_long blade5",
+            "bookskill_spear4",
+            "bookskill_armorer4",
+            "bookskill_sneak5",
+            "bookskill_speechcraft5",
+            "bookskill_light armor5",
+            "bookskill_armorer5",
+            "bookskill_short blade5",
+            "bookskill_athletics5",
+            "bookskill_block5",
+            "bookskill_medium armor5",
+            "bookskill_unarmored5",
+            "bookskill_spear5",
+            "bookskill_mysticism4"
+        },
+        icon = "Icons\\MAC\\icn_vivecLessons.dds",
+        bgColor = "purple",
+        id = "vivec_lessons_01",
+        hidden = false
+    },
+    {
         type = "unique",
         name = l10n('killtribunal_01_name'),
         description = l10n('killtribunal_01_description'),
@@ -486,6 +756,60 @@ local baseAchievements = {
         bgColor = "purple",
         id = "killtribunal_01",
         hidden = true
+    },
+    {
+        type = "unique",
+        name = l10n('skooma_01_name'),
+        description = l10n('skooma_01_description'),
+        icon = "Icons\\MAC\\icn_skoomaDrink.dds",
+        bgColor = "purple",
+        id = "skooma_01",
+        hidden = true
+    },
+    {
+        type = "multi_quest",
+        name = l10n('sq_09_name'),
+        description = l10n('sq_09_description'),
+        journalID = { "MT_S_BalancedArmor", "MT_S_DeepBiting", "MT_S_Denial", "MT_S_Fleetness", "MT_S_FluidEvasion", "MT_S_GlibSpeech", "MT_S_Golden", "MT_S_Green", "MT_S_Hewing", "MT_S_HornyFist", "MT_S_Impaling", "MT_S_Leaping", "MT_S_MartialCraft", "MT_S_NimbleArmor", "MT_S_Red", "MT_S_Safekeeping", "MT_S_Silver", "MT_S_Smiting", "MT_S_Stalking", "MT_S_StolidArmor", "MT_S_Sublime", "MT_S_Sureflight", "MT_S_Swiftblade", "MT_S_Transcendent", "MT_S_Transfiguring", "MT_S_Unseen" },
+        stage = {
+            100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
+            100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
+            100, 100, 100, 100, 100, 100
+        },
+        operator = function(self, currentQuestStageTable)
+            return(
+                (currentQuestStageTable[1] >= self.stage[1]) and
+                (currentQuestStageTable[2] >= self.stage[2]) and
+                (currentQuestStageTable[3] >= self.stage[3]) and
+                (currentQuestStageTable[4] >= self.stage[4]) and
+                (currentQuestStageTable[5] >= self.stage[5]) and
+                (currentQuestStageTable[6] >= self.stage[6]) and
+                (currentQuestStageTable[7] >= self.stage[7]) and
+                (currentQuestStageTable[8] >= self.stage[8]) and
+                (currentQuestStageTable[9] >= self.stage[9]) and
+                (currentQuestStageTable[10] >= self.stage[10]) and
+                (currentQuestStageTable[11] >= self.stage[11]) and
+                (currentQuestStageTable[12] >= self.stage[12]) and
+                (currentQuestStageTable[13] >= self.stage[13]) and
+                (currentQuestStageTable[14] >= self.stage[14]) and
+                (currentQuestStageTable[15] >= self.stage[15]) and
+                (currentQuestStageTable[16] >= self.stage[16]) and
+                (currentQuestStageTable[17] >= self.stage[17]) and
+                (currentQuestStageTable[18] >= self.stage[18]) and
+                (currentQuestStageTable[19] >= self.stage[19]) and
+                (currentQuestStageTable[20] >= self.stage[20]) and
+                (currentQuestStageTable[21] >= self.stage[21]) and
+                (currentQuestStageTable[22] >= self.stage[22]) and
+                (currentQuestStageTable[23] >= self.stage[23]) and
+                (currentQuestStageTable[24] >= self.stage[24]) and
+                (currentQuestStageTable[25] >= self.stage[25]) and
+                (currentQuestStageTable[26] >= self.stage[26])
+            )
+        end,
+        icon = "Icons\\MAC\\icn_webOfMephala.dds",
+        bgColor = "red",
+        id = "sq_09",
+        hidden = false
     },
     {
         type = "join_faction",
@@ -578,6 +902,119 @@ local baseAchievements = {
         hidden = false
     },
     {
+        type = "equipment",
+        name = l10n('eq_01_name'),
+        description = l10n('eq_01_description'),
+        equipment = {
+            [slot.Boots] = "daedric_boots",
+            [slot.Cuirass] = {"daedric_cuirass", "daedric_cuirass_htab"},
+            [slot.Greaves] = {"daedric_greaves", "daedric_greaves_htab"},
+            [slot.LeftGauntlet] = "daedric_gauntlet_left",
+            [slot.RightGauntlet] = "daedric_gauntlet_right",
+            [slot.LeftPauldron] = "daedric_pauldron_left",
+            [slot.RightPauldron] = "daedric_pauldron_right",
+            [slot.Helmet] = {"daedric_god_helm", "daedric_fountain_helm", "daedric_terrifying_helm"},
+            [slot.CarriedLeft] = {"daedric_shield", "daedric_towershield"}
+        },
+        icon = "Icons\\MAC\\icn_daedricEq.dds",
+        bgColor = "blue",
+        id = "eq_01",
+        hidden = false
+    },
+    {
+        type = "equipment",
+        name = l10n('eq_02_name'),
+        description = l10n('eq_02_description'),
+        equipment = {
+            [slot.Boots] = "glass_boots",
+            [slot.Cuirass] = "glass_cuirass",
+            [slot.Greaves] = "glass_greaves",
+            [slot.LeftGauntlet] = "glass_bracer_left",
+            [slot.RightGauntlet] = "glass_bracer_right",
+            [slot.LeftPauldron] = "glass_pauldron_left",
+            [slot.RightPauldron] = "glass_pauldron_right",
+            [slot.Helmet] = "glass_helm",
+            [slot.CarriedLeft] = {"glass_shield", "glass_towershield"}
+        },
+        icon = "Icons\\MAC\\icn_glassEq.dds",
+        bgColor = "blue",
+        id = "eq_02",
+        hidden = false
+    },
+    {
+        type = "equipment",
+        name = l10n('eq_03_name'),
+        description = l10n('eq_03_description'),
+        equipment = {
+            [slot.Boots] = "adamantium boots",
+            [slot.Cuirass] = "adamantium_cuirass",
+            [slot.Greaves] = "adamantium_greaves",
+            [slot.LeftGauntlet] = "adamantium_bracer_left",
+            [slot.RightGauntlet] = "adamantium_bracer_right",
+            [slot.LeftPauldron] = "adamantium_pauldron_left",
+            [slot.RightPauldron] = "adamantium_pauldron_right",
+            [slot.Helmet] = {"adamantium_helm", "addamantium_helm"}
+        },
+        icon = "Icons\\MAC\\icn_adamantiumEq.dds",
+        bgColor = "blue",
+        id = "eq_03",
+        hidden = false
+    },
+    {
+        type = "unique",
+        name = l10n('ordinator_01_name'),
+        description = l10n('ordinator_01_description'),
+        icon = "Icons\\MAC\\icn_ordinator.dds",
+        bgColor = "purple",
+        id = "ordinator_01",
+        hidden = true
+    },
+    {
+        type = "unique",
+        name = l10n('free_slaves_01_name'),
+        description = l10n('free_slaves_01_description'),
+        icon = "Icons\\MAC\\icn_shackle.dds",
+        bgColor = "purple",
+        id = "free_slaves_01",
+        hidden = false
+    },
+    {
+        type = "unique",
+        name = l10n('orc_intelligence_01_name'),
+        description = l10n('orc_intelligence_01_description'),
+        icon = "Icons\\MAC\\icn_orcIntelligence.dds",
+        bgColor = "purple",
+        id = "orc_intelligence_01",
+        hidden = false
+    },
+    {
+        type = "unique",
+        name = l10n('nord_speechcraft_01_name'),
+        description = l10n('nord_speechcraft_01_description'),
+        icon = "Icons\\MAC\\icn_nordSpeechcraft.dds",
+        bgColor = "purple",
+        id = "nord_speechcraft_01",
+        hidden = false
+    },
+    {
+        type = "unique",
+        name = l10n('beast_nerevarine_01_name'),
+        description = l10n('beast_nerevarine_01_description'),
+        icon = "Icons\\MAC\\icn_beastNerevarine.dds",
+        bgColor = "purple",
+        id = "beast_nerevarine_01",
+        hidden = true
+    },
+    {
+        type = "unique",
+        name = l10n('azurastar_01_name'),
+        description = l10n('azurastar_01_description'),
+        icon = "Icons\\MAC\\icn_bigsoul.dds",
+        bgColor = "purple",
+        id = "azurastar_01",
+        hidden = false
+    },
+    {
         type = "rank_faction",
         name = l10n('fc_10_name'),
         description = l10n('fc_10_description'),
@@ -664,6 +1101,48 @@ local baseAchievements = {
         bgColor = "aqua",
         id = "fc_17",
         hidden = true
+    },
+    {
+        type = "rank_faction",
+        name = l10n('fc_19_name'),
+        description = l10n('fc_19_description'),
+        factionId = "telvanni",
+        rank = 10,
+        icon = "Icons\\MAC\\icn_rankTelvanni.dds",
+        bgColor = "aqua",
+        id = "fc_19",
+        hidden = true
+    },
+    {
+        type = "rank_faction",
+        name = l10n('fc_20_name'),
+        description = l10n('fc_20_description'),
+        factionId = "hlaalu",
+        rank = 10,
+        icon = "Icons\\MAC\\icn_rankHlaalu.dds",
+        bgColor = "aqua",
+        id = "fc_20",
+        hidden = true
+    },
+    {
+        type = "rank_faction",
+        name = l10n('fc_21_name'),
+        description = l10n('fc_21_description'),
+        factionId = "redoran",
+        rank = 10,
+        icon = "Icons\\MAC\\icn_rankRedoran.dds",
+        bgColor = "aqua",
+        id = "fc_21",
+        hidden = true
+    },
+    {
+        type = "unique",
+        name = l10n('dayspassed_02_name'),
+        description = l10n('dayspassed_02_description'),
+        icon = "Icons\\MAC\\icn_stillaStranger.dds",
+        bgColor = "purple",
+        id = "dayspassed_02",
+        hidden = false
     },
     {
         type = "multi_quest",
