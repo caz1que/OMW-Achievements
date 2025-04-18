@@ -113,7 +113,7 @@ Once you start the game, your achievements will appear at the end of the widget 
 
 <br>
 
-## How to test your achievements
+# How to test your achievements
 
 I highly recommend testing achievements in debug mode. Especially if you want to get them in your playthrough later.
 
@@ -125,7 +125,7 @@ This will create a new save directory.
 
 <br>
 
-### How to test getting achievement type "single_quest"
+## How to test getting achievement type "single_quest"
 
 1. Open the game console (by default ~).
 2. Enter the command `journal "<journalID>" <stage>`, where:
@@ -135,7 +135,7 @@ This will create a new save directory.
 
 <br>
 
-### How to test getting achievement type "multi_quest"
+## How to test getting achievement type "multi_quest"
 
 1. Open the game console (by default ~).
 2. The process is the same as in "single_quest", but the 'journal' command must be entered for each quest. The order in which the commands are executed does not matter.
@@ -143,7 +143,7 @@ This will create a new save directory.
 
 <br>
 
-### How to test getting achievement type "talkto"
+## How to test getting achievement type "talkto"
 
 There are two options:
 - Find the necessary NPC for the dialogue manually
@@ -153,7 +153,7 @@ After that, you should start a dialogue with this NPC. If all is well, you will 
 
 <br>
 
-### How to test getting achievement type "join_faction"
+## How to test getting achievement type "join_faction"
 
 1. Open the game console (by default ~).
 2. Enter the command `PCJoinFaction "<factionId>"`, where `factionId` is the ID of the faction you need to join to get the achievement.
@@ -161,7 +161,7 @@ After that, you should start a dialogue with this NPC. If all is well, you will 
 
 <br>
 
-### How to test getting achievement type "rank_faction"
+## How to test getting achievement type "rank_faction"
 
 1. Open the game console (by default ~).
 2. Enter the command `PCJoinFaction "<factionId>"`, where `factionId` is the ID of the faction in which you need to achieve a certain rank to get the achievement.
