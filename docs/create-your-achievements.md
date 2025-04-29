@@ -137,20 +137,16 @@ For possible equipment slots, see [OpenMW Documentation](https://openmw.readthed
 
 ## How to add your achievements
 
-First of all, we need to use the `scripts\omw_achievements\achievements\playerAchievements.lua` file.
+To add your custom achievement pack, first you need to create a new .lua file at the path: `scripts/omw_achievements/achievements` (since version 2.1.0).
 
-Initially, it looks like this:
+For example, `scripts/omw_achievements/achievements/myAchievementsPack.lua`.
 
-```lua
-local playerAchievements = {}
+This .lua file should return a table with achievements, where each achievement is a separate table.
 
-return playerAchievements
-```
-
-To add one achievement, you need to add one table to the `playerAchievements` table. For example:
+Example: 
 
 ```lua
-local playerAchievements = {
+local myAchievements = {
     {
         type = "single_quest",
         name = "MyAchievement",
@@ -166,7 +162,7 @@ local playerAchievements = {
     }
 }
 
-return playerAchievements
+return myAchievements
 ```
 
 Once you start the game, your achievements will appear at the end of the widget list.
