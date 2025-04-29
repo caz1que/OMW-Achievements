@@ -83,7 +83,7 @@ I.Settings.registerPage {
 }
 
 I.Settings.registerGroup {
-    key = 'Settings/OmwAchievements/ZCleanStorage',
+    key = 'Settings/OmwAchievements/YCleanStorage',
     page = 'OmwAchievements',
     l10n = 'OmwAchievements',
     name = 'setting_omwachievements_clean_storage_group',

@@ -44,4 +44,18 @@ function sk00maUtils.getAchievementById(achievementsList, id)
 
 end
 
+function sk00maUtils.achievementToData(achievement)
+
+    local data = {
+        name = achievement.name,
+        icon = achievement.icon,
+        description = achievement.description,
+        bgColor = achievement.bgColor,
+        id = achievement.id
+    }
+    
+    return data
+
+end
+
 return sk00maUtils

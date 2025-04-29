@@ -10,11 +10,8 @@ local interfaces = require('openmw.interfaces')
 
 local v2 = util.vector2
 
+local sk00maUtils = require('scripts.omw_achievements.utils.sk00maUtils')
 local achievements = require('scripts.omw_achievements.achievements.achievements')
-
-local function gettingAchievementEvent(data)
-    self.object:sendEvent('gettingAchievement', data)
-end
 
 local function onQuestUpdate(questId, stage)
 
@@ -28,9 +25,8 @@ local function onQuestUpdate(questId, stage)
             if questId == string.lower(achievements[i].journalID) then
                 if omwaData:get(achievements[i].id) == false then
                     if achievements[i].operator(achievements[i], stage) then
-                        local achievement = achievements[i]
-                        achievement.operator = nil
-                        gettingAchievementEvent(achievement)
+                        local data = sk00maUtils.achievementToData(achievements[i])
+                        self.object:sendEvent('gettingAchievement', data)
                     end
                 end
             end
@@ -57,9 +53,8 @@ local function onQuestUpdate(questId, stage)
                     end
 
                     if achievements[i].operator(achievements[i], currentQuestStageTable) then
-                        local achievement = achievements[i]
-                        achievement.operator = nil
-                        gettingAchievementEvent(achievement)
+                        local data = sk00maUtils.achievementToData(achievements[i])
+                        self.object:sendEvent('gettingAchievement', data)
                     end
 
                 end

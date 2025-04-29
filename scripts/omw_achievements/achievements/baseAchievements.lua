@@ -453,7 +453,7 @@ local baseAchievements = {
     },
     {
         type = "talkto",
-        name = l10n('tt_01_description'),
+        name = l10n('tt_02_name'),
         description = l10n('tt_02_description'),
         recordId = "mudcrab_unique",
         icon = "Icons\\MAC\\icn_MudcrabMerchant.dds",
