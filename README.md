@@ -59,7 +59,7 @@ Also in the mod settings, the ability to reset progress on achievements has been
 
 ## Mod version without built-in achievements
 
-If you want to use the framework without the built-in achievements, it can be downloaded [here](https://github.com/caz1que/OMW-Achievements/releases/tag/v2.0.0-framework). It can come in handy if you only want to use custom achievements.
+If you want to use the framework without the built-in achievements, it can be downloaded [here](https://github.com/caz1que/OMW-Achievements/releases/tag/v2.1.0-framework). It can come in handy if you only want to use custom achievements.
 
 <br>
 
