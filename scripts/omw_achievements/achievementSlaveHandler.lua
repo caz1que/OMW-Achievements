@@ -16,11 +16,16 @@ local function UiModeChanged(data)
     local slavesCounter = macData:get("slavesCounter")
 
     if data.newMode == "Dialogue" then
+
         local npc = data.arg
-        if (types.Actor.getEquipment(npc, slot.LeftGauntlet) ~= nil and types.Actor.getEquipment(npc, slot.LeftGauntlet).recordId == "slave_bracer_left") or (types.Actor.getEquipment(npc, slot.RightGauntlet) ~= nil and types.Actor.getEquipment(npc, slot.RightGauntlet).recordId == "slave_bracer_right") then
-            isSlaveDialogue = true
-            currentSlave = npc
+        
+        if npc ~= nil then
+            if (types.Actor.getEquipment(npc, slot.LeftGauntlet) ~= nil and types.Actor.getEquipment(npc, slot.LeftGauntlet).recordId == "slave_bracer_left") or (types.Actor.getEquipment(npc, slot.RightGauntlet) ~= nil and types.Actor.getEquipment(npc, slot.RightGauntlet).recordId == "slave_bracer_right") then
+                isSlaveDialogue = true
+                currentSlave = npc
+            end
         end
+
     end
 
     if data.oldMode == "Dialogue" and isSlaveDialogue == true then

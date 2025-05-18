@@ -49,17 +49,19 @@ local function UiModeChanged(data)
     local temporaryBeforeTable = {}
 
     if data.newMode == "Dialogue" then
-        if data.arg.recordId == "torasa aram" then
-            isTorasaDialogue = true
-            playerInventory = types.Actor.inventory(self.object)
+        if data.arg ~= nil then
+            if data.arg.recordId == "torasa aram" then
+                isTorasaDialogue = true
+                playerInventory = types.Actor.inventory(self.object)
 
-            for i = 1, #artifactsRecordIds do
-                if playerInventory:find(artifactsRecordIds[i]) ~= nil then
-                    table.insert(temporaryBeforeTable, artifactsRecordIds[i])
+                for i = 1, #artifactsRecordIds do
+                    if playerInventory:find(artifactsRecordIds[i]) ~= nil then
+                        table.insert(temporaryBeforeTable, artifactsRecordIds[i])
+                    end
+                    artifactsBeforeTrade = temporaryBeforeTable
                 end
-                artifactsBeforeTrade = temporaryBeforeTable
-            end
 
+            end
         end
     end
 
