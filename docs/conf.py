@@ -38,10 +38,6 @@ source_suffix = {
 html_theme = 'sphinxawesome_theme'
 html_static_path = ['_static']
 
-html_theme_options = asdict(ThemeOptions(
-   awesome_headerlinks=False
-))
-
 html_permalinks_icon = Icons.permalinks_icon
 
 # The name of an image file (relative to this directory) to place at the top
