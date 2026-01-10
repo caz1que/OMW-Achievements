@@ -7,15 +7,15 @@ Use the categorized sections below to quickly access achievement creation and te
     :icon: book
 
     .. toctree::
-        :caption: Reference
+        :caption: Create achievements
         :titlesonly:
         :maxdepth: 4
 
-        create-your-achievements
+        create-your-achievements.md
 
     .. toctree::
-        :caption: Lua
+        :caption: Testing
         :titlesonly:
         :maxdepth: 4
 
-        test-your-achievements
+        test-your-achievements.md
