@@ -8,6 +8,7 @@
 
 from dataclasses import asdict
 from sphinxawesome_theme import ThemeOptions
+from sphinxawesome_theme.postprocess import Icons
 
 project = 'OMW Achievements'
 copyright = '2025, sko0malover'
@@ -40,6 +41,8 @@ html_static_path = ['_static']
 html_theme_options = asdict(ThemeOptions(
    awesome_headerlinks=False
 ))
+
+html_permalinks_icon = Icons.permalinks_icon
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
