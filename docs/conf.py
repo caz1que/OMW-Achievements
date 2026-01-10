@@ -6,10 +6,13 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'OMW-Achievements'
+from dataclasses import asdict
+from sphinxawesome_theme import ThemeOptions
+
+project = 'OMW Achievements'
 copyright = '2025, sko0malover'
 author = 'sko0malover'
-release = 'v2.0.0'
+release = 'v2.1.1'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -33,3 +36,7 @@ source_suffix = {
 
 html_theme = 'sphinxawesome_theme'
 html_static_path = ['_static']
+
+html_theme_options = asdict(ThemeOptions(
+   awesome_headerlinks=False
+))
