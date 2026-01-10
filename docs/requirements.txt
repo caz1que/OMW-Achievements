@@ -2,3 +2,4 @@ sphinx
 sphinx_rtd_theme
 myst-parser
 sphinxawesome-theme
+sphinx-design
