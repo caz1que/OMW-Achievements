@@ -25,6 +25,7 @@ exclude_patterns = []
 
 extensions = [
     'myst_parser',
+    'sphinx_design',
 ]
 
 source_suffix = {
