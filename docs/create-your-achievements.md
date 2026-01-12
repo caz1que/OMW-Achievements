@@ -1,4 +1,4 @@
-# How to add and create your achievements
+# Add and create your achievements
 
 <br>
 
