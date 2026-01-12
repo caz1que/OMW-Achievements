@@ -1,12 +1,11 @@
-# How to test your achievements
+# Test your achievements
 
 I highly recommend testing achievements in debug mode. Especially if you want to get them in your playthrough later.
 
 **How to enable debug mode in the OpenMW launcher:**
 
-Go to "Settings" -> "Debug" -> tick the checkbox "Skip menu and create a default character".
-
-This will create a new save directory.
+- Go to "Settings" -> "Debug" -> tick the checkbox "Skip menu and create a default character".
+- This will create a new save directory.
 
 <br>
 
