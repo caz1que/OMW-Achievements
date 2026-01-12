@@ -4,18 +4,18 @@
 
 ## Achievement types
 
-The following types of achievements are available:
+To unlock an achievement, a player must meet the required conditions defined by its type. Below are the available types and what conditions they represent:
 
 | Type         | Description                                                                                |
 |--------------|--------------------------------------------------------------------------------------------|
-| single_quest | To get this achievement you need to reach a certain stage in the quest.                    |
-| multi_quest  | To get this achievement you need to reach certain stages in several quests.                |
-| talkto       | To get this achievement, you must start a dialog with a specific NPC (for the first time). |
-| join_faction | To get this achievement, you must join a specific faction.                                 |
-| rank_faction | To get this achievement, you must obtain a certain rank in a faction.                      |
-| visit_all    | To get this type of achievement you need to visit all the listed cells.                    |
-| read_all     | To get this type of achievement, you need to read all the listed books.                    |
-| equipment    | To get this type of achievement, you must equip the listed items on the specified equipment slots. |
+| single_quest | Reach a certain stage in the quest.                      |
+| multi_quest  | Reach certain stages in several quests.                  |
+| talkto       | Start a dialog with a specific NPC (for the first time). |
+| join_faction | Join a specific faction.                                 |
+| rank_faction | Obtain a certain rank in a faction.                      |
+| visit_all    | Visit all the listed cells.                              |
+| read_all     | Read all the listed books.                               |
+| equipment    | Equip the listed items on the specified equipment slots. |
 
 <br>
 
