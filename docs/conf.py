@@ -13,7 +13,7 @@ from sphinxawesome_theme.postprocess import Icons
 project = 'OMW Achievements'
 copyright = '2025, sko0malover'
 author = 'sko0malover'
-release = 'v2.1.1'
+release = 'v3.0.0'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
