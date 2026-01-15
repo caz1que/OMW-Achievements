@@ -142,6 +142,7 @@ For possible equipment slots, see [OpenMW Documentation](https://openmw.readthed
 |-----------|----------------------------------------------------------------------------------------------|
 | value     | *number*, *float* The value of the variable that needs to be achieved.                       |
 | variable  | *string* Variable name.                                                                      |
+| operator  | *function* A function that checks the value of a variable and contains a condition for opening an achievement. |
 | enableProgress  | *boolean* If a variable has the ability to accumulate a value (counter or action tracker), then the progress bar logic will be used in the window UI. |
 
 **Example:**
