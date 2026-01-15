@@ -79,3 +79,11 @@ After that, you should start a dialogue with this NPC. If all is well, you will 
 3. Add all the required items to the player's inventory using this command and then equip these items to the slots listed in the `equipment` table.
 4. If you used a table in the `equipment` table values, you only need to equip one item from that table.
 5. If all is well, you will receive a notification that the achievement has been unlocked, and in the achievements widget it will be marked as "unlocked".
+
+<br>
+
+## How to test getting achievement type "equipment"
+
+1. Open the game console (by default ~).
+2. Enter the command `set <variable> to <value>`, where `<variable>` is the name of the variable whose `<value>` needs to be reached.
+3. If all is well, you will receive a notification that the achievement has been unlocked, and in the achievements widget it will be marked as "unlocked".
