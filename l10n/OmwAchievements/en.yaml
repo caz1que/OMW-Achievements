@@ -1,5 +1,5 @@
 setting_omwachievements_page: 'OpenMW Achievements'
-setting_omwachievements_page_description: 'Adds achievements to the game. Version: v2.1.1'
+setting_omwachievements_page_description: 'Adds achievements to the game. Version: v3.0.0'
 setting_omwachievements_group: 'OpenMW Achievements'
 setting_omwachievements_group_description: 'OpenMW Achievements Settings'
 setting_toggle: 'Toggle Widget'
@@ -14,6 +14,8 @@ setting_ui_scaling_factor: "UI Scale"
 setting_ui_scaling_factor_description: "Interface scale for the achievements window. For example, if you need to make the interface a little smaller, use the value n < 1 (e. g. 0.8), if larger - n > 1 (e. g. 1.2)."
 setting_notification_scaling_factor: "Notification Scale"
 setting_notification_scaling_factor_description: "Scale of the pop-up notification that appears after receiving an achievement. For example, if you need to make the notification a little smaller, use the value n < 1 (e. g. 0.8), if larger - n > 1 (e. g. 1.2)."
+setting_progress_format: "Progress Format"
+setting_progress_format_description: "Progress Format. Choose how your current progress is displayed - as a percentage (e. g. 50%) or as a fraction (e. g. 12/24)."
 
 setting_omwachievements_clean_storage_group: "Reset achievement progress"
 setting_omwachievements_group_clean_storage_description: "Reset achievement progress. Can be useful when reinstalling a mod or getting achievements again."
@@ -30,6 +32,9 @@ left_top: "Left Top"
 left_bottom: "Left Bottom"
 center_bottom: "Center Bottom"
 center_top: "Center Top"
+
+percent: "Percent"
+fraction: "Fraction"
 
 header_text: "Achievements"
 
@@ -51,13 +56,13 @@ mq_02_description: "Begin the main quest."
 mq_03_name: "Nerevar Rising"
 mq_03_description: "Get confirmation that you are not (yet) the Nerevarine."
 mq_04_name: "Tribe Unmourned"
-mq_04_description: "Learn about the existence of House Dagoth, the former sixth house."
+mq_04_description: "Learn about the existence of House Dagoth."
 mq_05_name: "The Endling"
 mq_05_description: "Meet Yagrum Bagarn, the last of the Dwemer."
 mq_06_name: "House Father"
 mq_06_description: "Become Hortator of House Redoran, House Hlaalu, and House Telvanni."
 mq_07_name: "Folk Hero"
-mq_07_description: "Be recognized as the Nerevarine by the Urshilaku, the Ahemmusa, the Zainab, and the Erabenimsun."
+mq_07_description: "Be recognized as the Nerevarine by all Ashlander tribes."
 mq_08_name: "The Warrior Poet"
 mq_08_description: "Meet Vivec, head of the Tribunal."
 mq_09_name:  "Doing It The Hard Way"
@@ -158,7 +163,7 @@ vall_01_description: "Enter all 24 Dwemer ruins in Vvardenfell."
 vall_02_name: "Echo from the Past"
 vall_02_description: "Enter all 88 Ancestral Tombs in Vvardenfell."
 vall_03_name: "Conqueror of the Deep"
-vall_03_description: "Enter all 43 Mines in Vvardenfell."
+vall_03_description: "Enter all 44 Mines in Vvardenfell."
 vall_04_name: "Dunmer Strongholds"
 vall_04_description: "Enter all 11 Dunmer Strongholds in Vvardenfell."
 

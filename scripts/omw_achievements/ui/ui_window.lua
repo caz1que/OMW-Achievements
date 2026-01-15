@@ -12,6 +12,7 @@ local interfaces = require('openmw.interfaces')
 
 local playerSettings = storage.playerSection('Settings/OmwAchievements/Options')
 local achievements = require('scripts.omw_achievements.achievements.achievements')
+local createProgressBar = require('scripts.omw_achievements.ui.createProgressBar')
 
 local v2 = util.vector2
 local showable = nil
@@ -183,21 +184,22 @@ end
 
 --- ################################# ---
 
-local function createAchievement(name, description, icon_path, icon_color, icon_bg)
+local function createAchievement(name, description, icon_path, icon_color, icon_bg, achievementType, id)
 
     local screenSize = ui.screenSize()
-
     local width_ratio = 0.25
     local height_ratio = 0.65
-
     local scale_factor = playerSettings:get('ui_scaling_factor')
-
     local widget_width = screenSize.x * width_ratio * scale_factor
-
-    local nameTextSize = screenSize.x * 0.0094 * scale_factor
-    local descriptionTextSize = screenSize.y * 0.0160 * scale_factor
-
+    local nameTextSize = screenSize.x * 0.0086 * scale_factor
+    local descriptionTextSize = screenSize.y * 0.014 * scale_factor
     local icon_size = screenSize.y * 0.06 * scale_factor
+
+    if playerSettings:get('progress_format') == "percent" then
+        progressText = createProgressBar.getPercentage(achievementType, id) .. "%"
+    elseif playerSettings:get('progress_format') == "fraction" then
+        progressText = createProgressBar.getFraction(achievementType, id)
+    end
 
     local achievementLogo = {
         type = ui.TYPE.Image,
@@ -241,6 +243,14 @@ local function createAchievement(name, description, icon_path, icon_color, icon_
         }
     }
 
+    local achievementNameTextBox = {
+        type = ui.TYPE.Widget,
+        props = {
+            size = v2(((widget_width * 0.85)-7-icon_size)*0.88, nameTextSize*1.2)
+        },
+        content = ui.content({achievementNameText})
+    }
+
     local achievementDescriptionText = {
         type = ui.TYPE.Text,
         props = {
@@ -249,7 +259,7 @@ local function createAchievement(name, description, icon_path, icon_color, icon_
             autoSize = false,
             relativePosition = v2(0, 0),
             textSize = descriptionTextSize,
-            size = v2((widget_width * 0.85)-7-icon_size, descriptionTextSize*3),
+            size = v2(((widget_width * 0.85)-7-icon_size)*0.8, descriptionTextSize*2),
             multiline = true,
             wordWrap = true,
             textColor = util.color.hex("cccccc")
@@ -259,7 +269,7 @@ local function createAchievement(name, description, icon_path, icon_color, icon_
     local achievementDescriptionTextBox = {
         type = ui.TYPE.Widget,
         props = {
-            size = v2((widget_width * 0.85)-7-icon_size, descriptionTextSize*3)
+            size = v2(((widget_width * 0.85)-7-icon_size)*0.8, descriptionTextSize*2)
         },
         content = ui.content({achievementDescriptionText})
     }
@@ -267,14 +277,14 @@ local function createAchievement(name, description, icon_path, icon_color, icon_
     local emptyHBox = {
         type = ui.TYPE.Widget,
         props = {
-            size = v2(300, 6)
+            size = v2(10, 4.5)
         }
     }
 
     local emptyVBox = {
         type = ui.TYPE.Widget,
         props = {
-            size = v2(7, 80)
+            size = v2(9, 80)
         }
     }
 
@@ -287,9 +297,36 @@ local function createAchievement(name, description, icon_path, icon_color, icon_
             arrange = ui.ALIGNMENT.Start
         },
         content = ui.content {
-            achievementNameText,
+            achievementNameTextBox,
             emptyHBox,
             achievementDescriptionTextBox
+        }
+    }
+
+    local progressBar = {
+        type = ui.TYPE.Text,
+        template = I.MWUI.templates.textNormal,
+        props = {
+            text = progressText,
+            anchor = v2(.5, .5),
+            autoSize = false,
+            relativePosition = v2(.6, .5),
+            textSize = descriptionTextSize*0.9,
+            multiline = true,
+            wordWrap = true,
+            size = v2(((widget_width * 0.85)-7-icon_size)*0.12, icon_size*0.5),
+            textColor = util.color.hex("a1a1a1")
+        }
+    }
+    
+    local progressBarBox = {
+        type = ui.TYPE.Widget,
+        -- template = I.MWUI.templates.borders,
+        props = {
+            size = v2(((widget_width * 0.85)-7-icon_size)*0.12, icon_size*0.5)
+        },
+        content = ui.content {
+            progressBar
         }
     }
 
@@ -307,9 +344,12 @@ local function createAchievement(name, description, icon_path, icon_color, icon_
             grow = 1
         },
         content = ui.content(
-            {achievementLogoBox,
-            emptyVBox,
-            achievementText}
+            {
+                achievementLogoBox,
+                emptyVBox,
+                achievementText,
+                progressBarBox
+            }
         )
     }
 
@@ -317,18 +357,15 @@ local function createAchievement(name, description, icon_path, icon_color, icon_
 
 end
 
-local function createAchievementList(page, achievementsTable)
+local function createAchievementList(page, achievementsTable, mode)
 
     local screenSize = ui.screenSize()
 
     local width_ratio = 0.25
     local height_ratio = 0.65
-
     local scale_factor = playerSettings:get('ui_scaling_factor')
-
     local widget_width = screenSize.x * width_ratio * scale_factor
     local widget_height = screenSize.y * height_ratio * scale_factor
-
     local icon_size = screenSize.y * 0.06 * scale_factor
 
     local macData = interfaces.storageUtils.getStorage("achievements")
@@ -351,134 +388,189 @@ local function createAchievementList(page, achievementsTable)
     startLastIndex, endLastIndex = getPageRangeLast(#achievementsForList, lastPageAmount)
     emptyAchievementsAmount = 6 - lastPageAmount
 
+    -- Check if achievements exists
     if pageAmount ~= 0 then
-        if page ~= pageAmount or (page == pageAmount and lastPageAmount == 0) then
-            contentTable = {}
-            for i = startIndex, endIndex do
-                
-                if achievementsForList[i].id ~= "hidden_count_MAC" and macData:get(achievementsForList[i].id) == false then
-                    iconColor = "000000"
-                    iconBg = "Icons\\MAC\\icnBackground.tga"
-                elseif achievementsForList[i].id ~= "hidden_count_MAC" and macData:get(achievementsForList[i].id) == true then
-                    iconColor = "000000"
 
-                    if achievementsForList[i].bgColor ~= nil then
-                        if achievementsForList[i].bgColor == "green" then
-                            iconBg = "Icons\\MAC\\icnBackgroundGet_Green.tga"
-                        elseif achievementsForList[i].bgColor == "red" then
-                            iconBg = "Icons\\MAC\\icnBackgroundGet_Red.tga"
-                        elseif achievementsForList[i].bgColor == "blue" then
-                            iconBg = "Icons\\MAC\\icnBackgroundGet_Blue.tga"
-                        elseif achievementsForList[i].bgColor == "purple" then
-                            iconBg = "Icons\\MAC\\icnBackgroundGet_Purple.tga"
-                        elseif achievementsForList[i].bgColor == "yellow" then
-                            iconBg = "Icons\\MAC\\icnBackgroundGet_Yellow.tga"
-                        elseif achievementsForList[i].bgColor == "aqua" then
-                            iconBg = "Icons\\MAC\\icnBackgroundGet_Aqua.tga"
+        -- Not the last page or last page full of 6 achievements
+        if page ~= pageAmount or (page == pageAmount and lastPageAmount == 0) then
+
+            contentTable = {}
+
+            for i = startIndex, endIndex do
+
+                if mode == "achievements" then
+                    if achievementsForList[i].id ~= "hidden_count_MAC" and macData:get(achievementsForList[i].id) == false then
+                        iconColor = "000000"
+                        iconBg = "Icons\\MAC\\icnBackground.tga"
+                    elseif achievementsForList[i].id ~= "hidden_count_MAC" and macData:get(achievementsForList[i].id) == true then
+                        iconColor = "000000"
+
+                        if achievementsForList[i].bgColor ~= nil then
+                            if achievementsForList[i].bgColor == "green" then
+                                iconBg = "Icons\\MAC\\icnBackgroundGet_Green.tga"
+                            elseif achievementsForList[i].bgColor == "red" then
+                                iconBg = "Icons\\MAC\\icnBackgroundGet_Red.tga"
+                            elseif achievementsForList[i].bgColor == "blue" then
+                                iconBg = "Icons\\MAC\\icnBackgroundGet_Blue.tga"
+                            elseif achievementsForList[i].bgColor == "purple" then
+                                iconBg = "Icons\\MAC\\icnBackgroundGet_Purple.tga"
+                            elseif achievementsForList[i].bgColor == "yellow" then
+                                iconBg = "Icons\\MAC\\icnBackgroundGet_Yellow.tga"
+                            elseif achievementsForList[i].bgColor == "aqua" then
+                                iconBg = "Icons\\MAC\\icnBackgroundGet_Aqua.tga"
+                            end
+                        else
+                            iconBg = "Icons\\MAC\\icnBackgroundGet.tga"
                         end
-                    else
-                        iconBg = "Icons\\MAC\\icnBackgroundGet.tga"
+
+                    elseif achievementsForList[i].id == "hidden_count_MAC" then
+                        iconColor = "000000"
+                        iconBg = "Icons\\MAC\\icnBackground.tga"
                     end
 
-                elseif achievementsForList[i].id == "hidden_count_MAC" then
-                    iconColor = "000000"
-                    iconBg = "Icons\\MAC\\icnBackground.tga"
+                    local achievement = createAchievement(
+                        achievementsForList[i].name,
+                        achievementsForList[i].description,
+                        achievementsForList[i].icon,
+                        iconColor,
+                        iconBg,
+                        achievementsForList[i].type,
+                        achievementsForList[i].id
+                    )
+
+                    table.insert(contentTable, achievement)
+
+                elseif mode == "progress" then
+
+                    if achievementsForList[i].id ~= "hidden_count_MAC" and macData:get(achievementsForList[i].id) == false then
+                        progressBar = createProgressBar.createLocked(
+                            achievementsForList[i].type,
+                            achievementsForList[i].id
+                        )
+                    elseif achievementsForList[i].id ~= "hidden_count_MAC" and macData:get(achievementsForList[i].id) == true then
+                        progressBar = createProgressBar.createUnlocked()
+                    elseif achievementsForList[i].id == "hidden_count_MAC" then
+                        progressBar = createProgressBar.createEmpty()
+                    end
+
+                    table.insert(contentTable, progressBar)
                 end
 
-                local achievement = createAchievement(
-                achievementsForList[i].name,
-                achievementsForList[i].description,
-                achievementsForList[i].icon,
-                iconColor,
-                iconBg)
-
-                table.insert(contentTable, achievement)
-
             end
+
             list = ui.content(contentTable)
             return list
+
         end
 
+        -- Last page, not full of 6 achievements
         if page == pageAmount and lastPageAmount ~= 0 then
 
             contentTable = {}
-            for i = startLastIndex, endLastIndex do
-                
-                if achievementsForList[i].id ~= "hidden_count_MAC" and macData:get(achievementsForList[i].id) == false then
-                    iconColor = "000000"
-                    iconBg = "Icons\\MAC\\icnBackground.tga"
-                elseif achievementsForList[i].id ~= "hidden_count_MAC" and macData:get(achievementsForList[i].id) == true then
-                    iconColor = "000000"
-                    
-                    if achievementsForList[i].bgColor ~= nil then
-                        if achievementsForList[i].bgColor == "green" then
-                            iconBg = "Icons\\MAC\\icnBackgroundGet_Green.tga"
-                        elseif achievementsForList[i].bgColor == "red" then
-                            iconBg = "Icons\\MAC\\icnBackgroundGet_Red.tga"
-                        elseif achievementsForList[i].bgColor == "blue" then
-                            iconBg = "Icons\\MAC\\icnBackgroundGet_Blue.tga"
-                        elseif achievementsForList[i].bgColor == "purple" then
-                            iconBg = "Icons\\MAC\\icnBackgroundGet_Purple.tga"
-                        elseif achievementsForList[i].bgColor == "yellow" then
-                            iconBg = "Icons\\MAC\\icnBackgroundGet_Yellow.tga"
-                        elseif achievementsForList[i].bgColor == "aqua" then
-                            iconBg = "Icons\\MAC\\icnBackgroundGet_Aqua.tga"
+
+            if mode == "achievements" then
+                for i = startLastIndex, endLastIndex do
+                    if achievementsForList[i].id ~= "hidden_count_MAC" and macData:get(achievementsForList[i].id) == false then
+                        iconColor = "000000"
+                        iconBg = "Icons\\MAC\\icnBackground.tga"
+                    elseif achievementsForList[i].id ~= "hidden_count_MAC" and macData:get(achievementsForList[i].id) == true then
+                        iconColor = "000000"
+                        
+                        if achievementsForList[i].bgColor ~= nil then
+                            if achievementsForList[i].bgColor == "green" then
+                                iconBg = "Icons\\MAC\\icnBackgroundGet_Green.tga"
+                            elseif achievementsForList[i].bgColor == "red" then
+                                iconBg = "Icons\\MAC\\icnBackgroundGet_Red.tga"
+                            elseif achievementsForList[i].bgColor == "blue" then
+                                iconBg = "Icons\\MAC\\icnBackgroundGet_Blue.tga"
+                            elseif achievementsForList[i].bgColor == "purple" then
+                                iconBg = "Icons\\MAC\\icnBackgroundGet_Purple.tga"
+                            elseif achievementsForList[i].bgColor == "yellow" then
+                                iconBg = "Icons\\MAC\\icnBackgroundGet_Yellow.tga"
+                            elseif achievementsForList[i].bgColor == "aqua" then
+                                iconBg = "Icons\\MAC\\icnBackgroundGet_Aqua.tga"
+                            end
+                        else
+                            iconBg = "Icons\\MAC\\icnBackgroundGet.tga"
                         end
-                    else
-                        iconBg = "Icons\\MAC\\icnBackgroundGet.tga"
+
+                    elseif achievementsForList[i].id == "hidden_count_MAC" then
+                        iconColor = "000000"
+                        iconBg = "Icons\\MAC\\icnBackground.tga"
                     end
 
-                elseif achievementsForList[i].id == "hidden_count_MAC" then
-                    iconColor = "000000"
-                    iconBg = "Icons\\MAC\\icnBackground.tga"
+                    local achievement = createAchievement(
+                        achievementsForList[i].name,
+                        achievementsForList[i].description,
+                        achievementsForList[i].icon,
+                        iconColor,
+                        iconBg,
+                        achievementsForList[i].type,
+                        achievementsForList[i].id
+                    )
+
+                    table.insert(contentTable, achievement)
+
+                end
+                for i = 1, emptyAchievementsAmount do
+                    local emptyAchievement = {
+                        type = ui.TYPE.Widget,
+                        template = I.MWUI.templates.borders,
+                        props = {
+                            size = v2((widget_width * 0.85), icon_size)
+                        }
+                    }
+
+                    local emptyAchievementFlex = {
+                        type = ui.TYPE.Flex,
+                        props = {
+                            horizontal = true,
+                            autoSize = false,
+                            relativePosition = v2(0, 0),
+                            align = ui.ALIGNMENT.Start,
+                            arrange = ui.ALIGNMENT.Center
+                        },
+                        external = {
+                            stretch = 1,
+                            grow = 1
+                        },
+                        content = ui.content {
+                            {emptyAchievement}
+                        }
+                    }
+
+                    table.insert(contentTable, emptyAchievementFlex)
+                end
+            elseif mode == "progress" then
+                
+                for i = startLastIndex, endLastIndex do
+                    if achievementsForList[i].id ~= "hidden_count_MAC" and macData:get(achievementsForList[i].id) == false then
+                        progressBar = createProgressBar.createLocked(
+                            achievementsForList[i].type,
+                            achievementsForList[i].id
+                        )
+                    elseif achievementsForList[i].id ~= "hidden_count_MAC" and macData:get(achievementsForList[i].id) == true then
+                        progressBar = createProgressBar.createUnlocked()
+                    elseif achievementsForList[i].id == "hidden_count_MAC" then
+                        progressBar = createProgressBar.createEmpty()
+                    end
+
+                    table.insert(contentTable, progressBar)
                 end
 
-                local achievement = createAchievement(
-                achievementsForList[i].name,
-                achievementsForList[i].description,
-                achievementsForList[i].icon,
-                iconColor,
-                iconBg)
-
-                table.insert(contentTable, achievement)
-
-            end
-
-            for i = 1, emptyAchievementsAmount do
-
-                local emptyAchievement = {
-                    type = ui.TYPE.Widget,
-                    template = I.MWUI.templates.borders,
-                    props = {
-                        size = v2((widget_width * 0.85), icon_size)
-                    }
-                }
-
-                local emptyAchievementFlex = {
-                    type = ui.TYPE.Flex,
-                    props = {
-                        horizontal = true,
-                        autoSize = false,
-                        relativePosition = v2(0, 0),
-                        align = ui.ALIGNMENT.Start,
-                        arrange = ui.ALIGNMENT.Center
-                    },
-                    external = {
-                        stretch = 1,
-                        grow = 1
-                    },
-                    content = ui.content {
-                        {emptyAchievement}
-                    }
-                }
-
-                table.insert(contentTable, emptyAchievementFlex)
+                for i = 1, emptyAchievementsAmount do
+                    emptyProgressBar = createProgressBar.createEmpty()
+                    table.insert(contentTable, emptyProgressBar)
+                end
 
             end
 
             list = ui.content(contentTable)
             return list
+
         end
+
+    -- There is no achievements
     else
 
         local thereIsEmptyText = {
@@ -505,6 +597,7 @@ local function createAchievementList(page, achievementsTable)
 
         list = ui.content({thereIsEmptyTextBox})
         return list
+
     end
 
 end
@@ -640,7 +733,18 @@ local function createMainWindow(isButtonBackVisible, isButtonForwardVisible, cur
             anchor = v2(0, 0),
             relativePosition = v2(0, 0)
         },
-        content = createAchievementList(currentPage, achievements)
+        content = createAchievementList(currentPage, achievements, "achievements")
+    }
+
+    local progressList = {
+        type = ui.TYPE.Flex,
+        props = {
+            size = v2(widget_width * 0.85, icon_size * 8 * scale_factor),
+            horizontal = false,
+            anchor = v2(0, 0),
+            relativePosition = v2(0, 0)
+        },
+        content = createAchievementList(currentPage, achievements, "progress")
     }
 
     local achievementsBox = {
@@ -650,7 +754,10 @@ local function createMainWindow(isButtonBackVisible, isButtonForwardVisible, cur
             relativePosition = v2(.5, .5),
             size = v2(widget_width * 0.85, icon_size * 8 * scale_factor)
         },
-        content = ui.content({achievementsList})
+        content = ui.content({
+            progressList,
+            achievementsList
+        })
     }
 
     local buttonBack = {
@@ -939,6 +1046,32 @@ local function createMainWindow(isButtonBackVisible, isButtonForwardVisible, cur
         }
     }
 
+    local mainWindowFlex = ui.content {
+        {
+            type = ui.TYPE.Flex,
+            props = {
+                name = "mainWindowFlex",
+                size = v2(widget_width, widget_height),
+                autoSize = false,
+                horizontal = false,
+                align = ui.ALIGNMENT.Center,
+                arrange = ui.ALIGNMENT.Center
+            },
+            content = ui.content {
+                    header,
+                    {
+                        name = "mainWindowWidget",
+                        type = ui.TYPE.Widget,
+                        template = I.MWUI.templates.bordersThick,
+                        props = {
+                            size = v2(widget_width, widget_height-20)
+                        },
+                        content = pluginBoxPadding
+                    }
+            }
+        }
+    }
+
     local mainWindow = {
         type = ui.TYPE.Container,
         layer = "Windows",
@@ -949,31 +1082,7 @@ local function createMainWindow(isButtonBackVisible, isButtonForwardVisible, cur
             anchor = v2(.5, .5),
             propagateEvents = false
         },
-        content = ui.content {
-            {
-                type = ui.TYPE.Flex,
-                props = {
-                    name = "mainWindowFlex",
-                    size = v2(widget_width, widget_height),
-                    autoSize = false,
-                    horizontal = false,
-                    align = ui.ALIGNMENT.Center,
-                    arrange = ui.ALIGNMENT.Center
-                },
-                content = ui.content {
-                        header,
-                        {
-                            name = "mainWindowWidget",
-                            type = ui.TYPE.Widget,
-                            template = I.MWUI.templates.bordersThick,
-                            props = {
-                                size = v2(widget_width, widget_height-20)
-                            },
-                            content = pluginBoxPadding
-                        }
-                }
-            }
-        }
+        content = mainWindowFlex
     }
 
     achievementWindow = ui.create(mainWindow)
@@ -986,6 +1095,7 @@ local function onKeyPress(key)
 
     if key.code == playerSettings:get('toggle_omwa') then
         if showable == nil then
+            core.sendGlobalEvent("getGlobalVariableProgress")
             I.UI.setMode('Interface', {windows = {}})
             current_MAC_section = "all"
             createMainWindow(false, true, 1, getAchievements())

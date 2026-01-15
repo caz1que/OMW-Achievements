@@ -3,22 +3,33 @@ MENU: scripts/omw_achievements/settingsPage.lua
 GLOBAL: scripts/omw_achievements/lib/globalCurrentSaveDir.lua
 MENU: scripts/omw_achievements/lib/menuCurrentSaveDir.lua
 PLAYER: scripts/omw_achievements/lib/playerCurrentSaveDir.lua
+GLOBAL: scripts/omw_achievements/lib/getGlobalVariable.lua
 
 PLAYER: scripts/omw_achievements/achievementStorage.lua
 PLAYER: scripts/omw_achievements/notificationHandler.lua
-
 PLAYER: scripts/omw_achievements/daysPassed.lua
-
+PLAYER: scripts/omw_achievements/handlers/globalVariableHandler.lua
 PLAYER: scripts/omw_achievements/ui/ui_window.lua
-PLAYER: scripts/omw_achievements/achievementCellHandler.lua
-PLAYER: scripts/omw_achievements/achievementEquipmentHandler.lua
-PLAYER: scripts/omw_achievements/achievementConsumeHandler.lua
-PLAYER: scripts/omw_achievements/achievementQuestHandler.lua
-PLAYER: scripts/omw_achievements/achievementWerewolfHandler.lua
-PLAYER: scripts/omw_achievements/achievementSlaveHandler.lua
-PLAYER: scripts/omw_achievements/achievementSoulHandler.lua
-PLAYER: scripts/omw_achievements/achievementUniqueHandler.lua
-PLAYER: scripts/omw_achievements/achievementMuseumHandler.lua
-PLAYER: scripts/omw_achievements/achievementFactionHandler.lua
-PLAYER: scripts/omw_achievements/achievementBookHandler.lua
-NPC, CREATURE: scripts/omw_achievements/achievementActorHandler.lua
+
+PLAYER: scripts/omw_achievements/handlers/cellHandler.lua
+PLAYER: scripts/omw_achievements/handlers/equipmentHandler.lua
+PLAYER: scripts/omw_achievements/handlers/questHandler.lua
+PLAYER: scripts/omw_achievements/handlers/factionHandler.lua
+PLAYER: scripts/omw_achievements/handlers/bookHandler.lua
+NPC, CREATURE: scripts/omw_achievements/handlers/actorHandler.lua
+
+PLAYER: scripts/omw_achievements/custom/book_01.lua
+PLAYER: scripts/omw_achievements/custom/skooma_01.lua
+PLAYER: scripts/omw_achievements/custom/museum_01.lua
+PLAYER: scripts/omw_achievements/custom/free_slaves_01.lua
+PLAYER: scripts/omw_achievements/custom/azurastar_01.lua
+PLAYER: scripts/omw_achievements/custom/werewolf_01.lua
+PLAYER: scripts/omw_achievements/custom/orc_intelligence_01.lua
+PLAYER: scripts/omw_achievements/custom/nord_speechcraft_01.lua
+NPC, CREATURE: scripts/omw_achievements/custom/ordinator_01.lua
+PLAYER: scripts/omw_achievements/custom/dayspassed_01.lua
+PLAYER: scripts/omw_achievements/custom/dayspassed_02.lua
+
+NPC, CREATURE: scripts/omw_achievements/custom/killtribunal_01.lua
+PLAYER: scripts/omw_achievements/custom/vivecIsDead.lua
+

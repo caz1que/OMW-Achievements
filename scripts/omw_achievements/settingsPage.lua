@@ -10,6 +10,7 @@ local v2 = util.vector2
 local l10n = core.l10n('OmwAchievements')
 
 local positions = {"right_top", "left_top", "right_bottom", "left_bottom", "center_bottom", "center_top"}
+local progressFormat = {"percent", "fraction"}
 local warning = require('scripts.omw_achievements.ui.warning_window')
 
 -- inputKeySelection by Pharis (taken from PerfectPlacement)
@@ -152,6 +153,18 @@ I.Settings.registerGroup {
             name = 'setting_ui_scaling_factor',
             description = 'setting_ui_scaling_factor_description',
             default = 1
+        },
+        {
+            key = 'progress_format',
+            renderer = 'select',
+            name = 'setting_progress_format',
+            description = 'setting_progress_format_description',
+            default = "percent",
+            argument = {
+                disabled = false,
+                l10n = 'OmwAchievements',
+                items = progressFormat
+            }
         },
     },
 }

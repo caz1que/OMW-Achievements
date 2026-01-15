@@ -1,6 +1,5 @@
 local menu = require('openmw.menu')
 local core = require('openmw.core')
-local ui = require('openmw.ui')
 
 local function requireCurrentSaveDir(data)
     

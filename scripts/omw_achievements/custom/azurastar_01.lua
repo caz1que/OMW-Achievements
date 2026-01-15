@@ -1,6 +1,5 @@
 local types = require('openmw.types')
 local self = require('openmw.self')
-local ui = require('openmw.ui')
 
 local sk00maUtils = require('scripts.omw_achievements.utils.sk00maUtils')
 local achievements = require('scripts.omw_achievements.achievements.achievements')

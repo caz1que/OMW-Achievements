@@ -10,7 +10,7 @@ local playerSettings = storage.playerSection('Settings/OmwAchievements/Options')
 
 local notification = {}
 
-function notification.createnotification(icon_path, achName, achDescription, bg)
+function notification.createNotification(icon_path, achName, achDescription, bg)
 
     local scale_factor = playerSettings:get('notification_scaling_factor')
 

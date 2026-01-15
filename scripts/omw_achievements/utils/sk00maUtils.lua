@@ -58,4 +58,45 @@ function sk00maUtils.achievementToData(achievement)
 
 end
 
+function sk00maUtils.tableToString(tbl)
+    local result = "{"
+    local first = true
+
+    for k, v in pairs(tbl) do
+        if not first then
+            result = result .. ", "
+        end
+        first = false
+
+        result = result .. string.format("%q = %q", k, tostring(v))
+    end
+
+    result = result .. "}"
+    return result
+end
+
+function sk00maUtils.stringToTable(str)
+    local tbl = {}
+
+    str = str:match("{(.*)}")
+    if not str or str:match("^%s*$") then
+        return tbl
+    end
+
+    for key, value in str:gmatch('"(.-)"%s*=%s*"(.-)"') do
+        -- convert numbers back
+        if tonumber(value) then
+            value = tonumber(value)
+        elseif value == "true" then
+            value = true
+        elseif value == "false" then
+            value = false
+        end
+
+        tbl[key] = value
+    end
+
+    return tbl
+end
+
 return sk00maUtils

@@ -82,7 +82,25 @@ local baseAchievements = {
         journalID = { "b5_redoranhort",  "b6_hlaaluhort", "b7_telvannihort" },
         stage = { 50, 50, 50 },
         operator = function(self, currentQuestStageTable)
-            return currentQuestStageTable[1] >= self.stage[1] and currentQuestStageTable[2] >= self.stage[2] and currentQuestStageTable[3] >= self.stage[3]
+            return currentQuestStageTable[1] >= self.stage[1] and
+            currentQuestStageTable[2] >= self.stage[2] and
+            currentQuestStageTable[3] >= self.stage[3]
+        end,
+        progressOperator = function(self, currentQuestStageTable)
+
+            local progress = 0
+            local progressMax = 3
+
+            for i = 1, 3 do
+                if currentQuestStageTable[i] ~= nil then
+                    if currentQuestStageTable[i] >= self.stage[i] then
+                        progress = progress + 1
+                    end
+                end
+            end
+
+            return {progress, progressMax}
+            
         end,
         icon = "Icons\\MAC\\icn_Hort.dds",
         bgColor = "yellow",
@@ -96,7 +114,26 @@ local baseAchievements = {
         journalID = { "b1_unifyurshilaku",  "b2_ahemmusasafe", "b3_zainabbride", "b4_killwarlovers" },
         stage = { 50, 50, 50, 55 },
         operator = function(self, currentQuestStageTable)
-            return currentQuestStageTable[1] >= self.stage[1] and currentQuestStageTable[2] >= self.stage[2] and currentQuestStageTable[3] >= self.stage[3] and currentQuestStageTable[4] >= self.stage[4]
+            return currentQuestStageTable[1] >= self.stage[1] and
+            currentQuestStageTable[2] >= self.stage[2] and
+            currentQuestStageTable[3] >= self.stage[3] and
+            currentQuestStageTable[4] >= self.stage[4]
+        end,
+        progressOperator = function(self, currentQuestStageTable)
+
+            local progress = 0
+            local progressMax = 4
+
+            for i = 1, 4 do
+                if currentQuestStageTable[i] ~= nil then
+                    if currentQuestStageTable[i] >= self.stage[i] then
+                        progress = progress + 1
+                    end
+                end
+            end
+
+            return {progress, progressMax}
+            
         end,
         icon = "Icons\\MAC\\icn_B_Nerevarine.dds",
         bgColor = "yellow",
@@ -124,7 +161,24 @@ local baseAchievements = {
         journalID = { "cx_backpath",  "c3_destroydagoth" },
         stage = { 50, 20 },
         operator = function(self, currentQuestStageTable)
-            return currentQuestStageTable[1] >= self.stage[1] and currentQuestStageTable[2] >= self.stage[2]
+            return currentQuestStageTable[1] >= self.stage[1] and
+            currentQuestStageTable[2] >= self.stage[2]
+        end,
+        progressOperator = function(self, currentQuestStageTable)
+
+            local progress = 0
+            local progressMax = 2
+
+            if currentQuestStageTable[1] >= self.stage[1] then
+                progress = progress + 1
+            end
+
+            if currentQuestStageTable[2] >= self.stage[2] then
+                progress = progress + 1
+            end
+
+            return {progress, progressMax}
+
         end,
         icon = "Icons\\MAC\\icn_SecretPath.dds",
         bgColor = "yellow",
@@ -230,7 +284,8 @@ local baseAchievements = {
         journalID = { "BM_FrostGiant2",  "BM_FrostGiant1" },
         stage = { 100, 100 },
         operator = function(self, currentQuestStageTable)
-            return currentQuestStageTable[1] >= self.stage[1] or currentQuestStageTable[2] >= self.stage[2]
+            return currentQuestStageTable[1] >= self.stage[1] or
+            currentQuestStageTable[2] >= self.stage[2]
         end,
         icon = "Icons\\MAC\\icn_BM_Karstaag.dds",
         bgColor = "yellow",
@@ -258,7 +313,25 @@ local baseAchievements = {
         journalID = { "c3_destroydagoth", "tr_sothasil", "bm_wildhunt"},
         stage = { 20, 100, 100 },
         operator = function(self, currentQuestStageTable)
-            return currentQuestStageTable[1] >= self.stage[1] and currentQuestStageTable[2] >= self.stage[2] and currentQuestStageTable[3] >= self.stage[3]
+            return currentQuestStageTable[1] >= self.stage[1] and
+            currentQuestStageTable[2] >= self.stage[2] and
+            currentQuestStageTable[3] >= self.stage[3]
+        end,
+        progressOperator = function(self, currentQuestStageTable)
+
+            local progress = 0
+            local progressMax = 3
+
+            for i = 1, 3 do
+                if currentQuestStageTable[i] ~= nil then
+                    if currentQuestStageTable[i] >= self.stage[i] then
+                        progress = progress + 1
+                    end
+                end
+            end
+
+            return {progress, progressMax}
+            
         end,
         icon = "Icons\\MAC\\icn_AllMainQ.dds",
         bgColor = "yellow",
@@ -286,7 +359,29 @@ local baseAchievements = {
         journalID = { "tt_fieldskummu", "tt_stopmoon", "tt_palacevivec", "tt_puzzlecanal", "tt_maskvivec", "tt_ruddyman", "tt_ghostgate" },
         stage = { 100, 100, 100, 100, 100, 100, 100 },
         operator = function(self, currentQuestStageTable)
-            return currentQuestStageTable[1] >= self.stage[1] and currentQuestStageTable[2] >= self.stage[2] and currentQuestStageTable[3] >= self.stage[3] and currentQuestStageTable[4] >= self.stage[4] and currentQuestStageTable[5] >= self.stage[5] and currentQuestStageTable[6] >= self.stage[6] and currentQuestStageTable[7] >= self.stage[7]
+            return currentQuestStageTable[1] >= self.stage[1] and
+            currentQuestStageTable[2] >= self.stage[2] and
+            currentQuestStageTable[3] >= self.stage[3] and
+            currentQuestStageTable[4] >= self.stage[4] and
+            currentQuestStageTable[5] >= self.stage[5] and
+            currentQuestStageTable[6] >= self.stage[6] and
+            currentQuestStageTable[7] >= self.stage[7]
+        end,
+        progressOperator = function(self, currentQuestStageTable)
+
+            local progress = 0
+            local progressMax = 7
+
+            for i = 1, 7 do
+                if currentQuestStageTable[i] ~= nil then
+                    if currentQuestStageTable[i] >= self.stage[i] then
+                        progress = progress + 1
+                    end
+                end
+            end
+
+            return {progress, progressMax}
+            
         end,
         icon = "Icons\\MAC\\icn_Pilgrimages.dds",
         bgColor = "red",
@@ -300,7 +395,25 @@ local baseAchievements = {
         journalID = { "mv_abusedhealer", "mv_recoverwidowmaker", "mv_paralyzedbarbarian" },
         stage = { 75, 70, 100 },
         operator = function(self, currentQuestStageTable)
-            return currentQuestStageTable[1] >= self.stage[1] and currentQuestStageTable[2] >= self.stage[2] and currentQuestStageTable[3] >= self.stage[3]
+            return currentQuestStageTable[1] >= self.stage[1] and
+            currentQuestStageTable[2] >= self.stage[2] and
+            currentQuestStageTable[3] >= self.stage[3]
+        end,
+        progressOperator = function(self, currentQuestStageTable)
+
+            local progress = 0
+            local progressMax = 3
+
+            for i = 1, 3 do
+                if currentQuestStageTable[i] ~= nil then
+                    if currentQuestStageTable[i] >= self.stage[i] then
+                        progress = progress + 1
+                    end
+                end
+            end
+
+            return {progress, progressMax}
+            
         end,
         icon = "Icons\\MAC\\icn_NakedNords.dds",
         bgColor = "red",
@@ -328,7 +441,34 @@ local baseAchievements = {
         journalID = { "EB_Unrequited", "MS_MatchMaker", "MV_MissingCompanion", "MV_VictimRomance", "MV_VictimRomance" },
         stage = { 110, 120, 60, 100, 105 },
         operator = function(self, currentQuestStageTable)
-            return((currentQuestStageTable[1] >= self.stage[1]) and (currentQuestStageTable[2] == self.stage[2]) and (currentQuestStageTable[3] == self.stage[3]) and (currentQuestStageTable[4] == self.stage[4]) and ((currentQuestStageTable[5]) == self.stage[5] or (currentQuestStageTable[6] == self.stage[6])))
+            return currentQuestStageTable[1] >= self.stage[1] and
+            currentQuestStageTable[2] == self.stage[2] and
+            currentQuestStageTable[3] == self.stage[3] and
+            ((currentQuestStageTable[4] == self.stage[4]) or (currentQuestStageTable[5] == self.stage[5]))
+        end,
+        progressOperator = function(self, currentQuestStageTable)
+
+            local progress = 0
+            local progressMax = 4
+
+            if currentQuestStageTable[1] >= self.stage[1] then
+                progress = progress + 1
+            end
+
+            if currentQuestStageTable[2] == self.stage[2] then
+                progress = progress + 1
+            end
+
+            if currentQuestStageTable[3] == self.stage[3] then
+                progress = progress + 1
+            end
+
+            if currentQuestStageTable[4] == self.stage[4] or currentQuestStageTable[5] == self.stage[5] then
+                progress = progress + 1
+            end
+
+            return {progress, progressMax}
+            
         end,
         icon = "Icons\\MAC\\icn_lovers.dds",
         bgColor = "red",
@@ -365,7 +505,29 @@ local baseAchievements = {
         journalID = { "DA_Azura", "DA_Boethiah", "DA_Malacath", "DA_Mehrunes", "DA_Mephala", "DA_MolagBal", "DA_Sheogorath" },
         stage = { 40, 70, 70, 40, 60, 30, 70 },
         operator = function(self, currentQuestStageTable)
-            return currentQuestStageTable[1] >= self.stage[1] and currentQuestStageTable[2] >= self.stage[2] and currentQuestStageTable[3] >= self.stage[3] and currentQuestStageTable[4] >= self.stage[4] and currentQuestStageTable[5] == self.stage[5] and currentQuestStageTable[6] == self.stage[6] and currentQuestStageTable[7] == self.stage[7]
+            return currentQuestStageTable[1] >= self.stage[1] and
+            currentQuestStageTable[2] >= self.stage[2] and
+            currentQuestStageTable[3] >= self.stage[3] and
+            currentQuestStageTable[4] >= self.stage[4] and
+            currentQuestStageTable[5] == self.stage[5] and
+            currentQuestStageTable[6] == self.stage[6] and
+            currentQuestStageTable[7] == self.stage[7]
+        end,
+        progressOperator = function(self, currentQuestStageTable)
+
+            local progress = 0
+            local progressMax = 7
+
+            for i = 1, 7 do
+                if currentQuestStageTable[i] ~= nil then
+                    if currentQuestStageTable[i] >= self.stage[i] then
+                        progress = progress + 1
+                    end
+                end
+            end
+
+            return {progress, progressMax}
+            
         end,
         icon = "Icons\\MAC\\icn_Daedrashrines.dds",
         bgColor = "red",
@@ -421,11 +583,29 @@ local baseAchievements = {
         journalID = { "VA_VampChild", "VA_VampHunter", "VA_VampBlood", "VA_VampCountess", "VA_VampCult", "VA_VampAmulet" },
         stage = { 40, 70, 70, 40, 60, 30 },
         operator = function(self, currentQuestStageTable)
-            return(
-                ((currentQuestStageTable[1] >= self.stage[1]) and (currentQuestStageTable[2] >= self.stage[2])) or
+            return ((currentQuestStageTable[1] >= self.stage[1]) and (currentQuestStageTable[2] >= self.stage[2])) or
                 ((currentQuestStageTable[3] >= self.stage[3]) and (currentQuestStageTable[4] >= self.stage[4])) or
                 ((currentQuestStageTable[5] >= self.stage[5]) and (currentQuestStageTable[6] >= self.stage[6]))
-            )
+        end,
+        progressOperator = function(self, currentQuestStageTable)
+
+            local progress = 0
+            local progressMax = 2
+
+            if currentQuestStageTable[1] >= self.stage[1] and currentQuestStageTable[2] < self.stage[2] then
+                progress = progress + 1
+            end
+
+            if currentQuestStageTable[3] >= self.stage[3] and currentQuestStageTable[4] < self.stage[4] then
+                progress = progress + 1
+            end
+            
+            if currentQuestStageTable[5] >= self.stage[5] and currentQuestStageTable[6] < self.stage[6] then
+                progress = progress + 1
+            end
+
+            return {progress, progressMax}
+            
         end,
         icon = "Icons\\MAC\\icn_VampQuests.dds",
         bgColor = "red",
@@ -806,6 +986,22 @@ local baseAchievements = {
                 (currentQuestStageTable[26] >= self.stage[26])
             )
         end,
+        progressOperator = function(self, currentQuestStageTable)
+
+            local progress = 0
+            local progressMax = 26
+
+            for i = 1, 26 do
+                if currentQuestStageTable[i] ~= nil then
+                    if currentQuestStageTable[i] >= self.stage[i] then
+                        progress = progress + 1
+                    end
+                end
+            end
+
+            return {progress, progressMax}
+            
+        end,
         icon = "Icons\\MAC\\icn_webOfMephala.dds",
         bgColor = "red",
         id = "sq_09",
@@ -1151,7 +1347,9 @@ local baseAchievements = {
         journalID = { "HH_Stronghold", "HR_Stronghold", "HT_Stronghold" },
         stage = { 300, 300, 300 },
         operator = function(self, currentQuestStageTable)
-            return currentQuestStageTable[1] == self.stage[1] or currentQuestStageTable[2] == self.stage[2] or currentQuestStageTable[3] == self.stage[3]
+            return currentQuestStageTable[1] == self.stage[1] or
+            currentQuestStageTable[2] == self.stage[2] or
+            currentQuestStageTable[3] == self.stage[3]
         end,
         icon = "Icons\\MAC\\icn_stronghold.dds",
         bgColor = "aqua",

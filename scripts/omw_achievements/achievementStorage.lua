@@ -1,8 +1,8 @@
 local storage = require('openmw.storage')
 local achievements = require('scripts.omw_achievements.achievements.achievements')
-local ui = require('openmw.ui')
 local types = require('openmw.types')
 local self = require('openmw.self')
+local sk00maUtils = require('scripts.omw_achievements.utils.sk00maUtils')
 
 local function tableToString(tbl)
     local result = "{"
@@ -96,7 +96,7 @@ local function createTemporaryPlayerSection()
 
     macData:setLifeTime(storage.LIFE_TIME.Temporary)
 
-    --- Counters for unique achievements
+    --- Counters for achievement types "read_all", "global_variable" and "visit_all"
     if macData:get("bookRead") == nil then
         macData:set("bookRead", {})
     end
@@ -105,6 +105,11 @@ local function createTemporaryPlayerSection()
         macData:set("visitedCells", {})
     end
 
+    if macData:get("globalVariables") == nil then
+        macData:set("globalVariables", {})
+    end
+
+    --- Counters for unique achievements
     if macData:get("museumArtifacts") == nil then
         macData:set("museumArtifacts", {})
     end
@@ -129,7 +134,7 @@ local function createPlayerSection()
 
     macData:setLifeTime(storage.LIFE_TIME.Persistent)
 
-    --- Counters for unique achievements
+    --- Counters for achievement types "read_all", "global_variable" and "visit_all"
     if macData:get("bookRead") == nil then
         macData:set("bookRead", {})
     end
@@ -138,6 +143,11 @@ local function createPlayerSection()
         macData:set("visitedCells", {})
     end
 
+    if macData:get("globalVariables") == nil then
+        macData:set("globalVariables", {})
+    end
+
+    --- Counters for unique achievements
     if macData:get("museumArtifacts") == nil then
         macData:set("museumArtifacts", {})
     end
@@ -151,6 +161,18 @@ local function createPlayerSection()
     end
 
     return macData
+
+end
+
+local function updateGlobalVariables(data)
+
+    if currentSaveDir == nil then
+        local macData = createTemporaryPlayerSection()
+        macData:set("globalVariables", sk00maUtils.stringToTable(data))
+    elseif currentSaveDir ~= nil then
+        local macData = createPlayerSection()
+        macData:set("globalVariables", sk00maUtils.stringToTable(data))
+    end
 
 end
 
@@ -201,7 +223,8 @@ return {
     },
     eventHandlers = {
         createStorage = createStorage,
-        updateStorage = updateStorage
+        updateStorage = updateStorage,
+        updateGlobalVariables = updateGlobalVariables
     },
     engineHandlers = {
         onSave = onSave
