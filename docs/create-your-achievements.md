@@ -16,6 +16,7 @@ To unlock an achievement, a player must meet the required conditions defined by 
 | visit_all    | Visit all the listed cells.                              |
 | read_all     | Read all the listed books.                               |
 | equipment    | Equip the listed items on the specified equipment slots. |
+| global_variable    | Opens when the specified value of a global variable is reached. |
 
 <br>
 
@@ -135,6 +136,40 @@ For possible equipment slots, see [OpenMW Documentation](https://openmw.readthed
 
 <br>
 
+## Keys for achievement type "global_variable"
+
+| Key       | Description                                                                                  |
+|-----------|----------------------------------------------------------------------------------------------|
+| value     | *number*, *float* The value of the variable that needs to be achieved.                       |
+| variable  | *string* Variable name.                                                                      |
+| enableProgress  | *boolean* If a variable has the ability to accumulate a value (counter or action tracker), then the progress bar logic will be used in the window UI. |
+
+**Example:**
+
+```lua
+local globalVarAchievements = {
+    {
+        type = "global_variable",
+        name = "Prayer Of The White Tower",
+        description = "Discover all 9 shrines in The Garden, White Cliffs.",
+        variable = "x32_WhiteRuinShrineCounter",
+        value = 9,
+        operator = function(self, givenValue)
+            return givenValue == self.value
+        end,
+        enableProgress = true,
+        icon = "Icons\\x32\\v\\achievement_shrine.tga",
+        bgColor = "purple",
+        id = "x32_shrines",
+        hidden = false
+    },
+}
+
+return globalVarAchievements
+```
+
+<br>
+
 ## How to add your achievements
 
 To add your custom achievement pack, first you need to create a new .lua file at the path: `scripts/omw_achievements/achievements` (since version 2.1.0).
@@ -143,7 +178,7 @@ For example, `scripts/omw_achievements/achievements/myAchievementsPack.lua`.
 
 This .lua file should return a table with achievements, where each achievement is a separate table.
 
-Example: 
+**Example:** 
 
 ```lua
 local myAchievements = {
